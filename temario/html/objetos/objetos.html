@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBJETOS</title>
+  <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+  <header>
+    <h1>OBJETOS</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+<div class="contenedor">
+    <div class="contenido">
+        <!-- OBJETOS -->
+        <h2>Objetos (Tipo de Dato)</h2>
+        <p>Los objetos en JavaScript son colecciones dinámicas de pares clave-valor. Son fundamentales para estructurar datos de manera organizada.</p>
+        <ul>
+        <!-- creacion de obejros -->
+        <li><strong> Crear objetos: </strong> Se pueden crear objetos utilizando la notación literal (llaves {}) o mediante constructores (como new Object() o clases).</li>
+        <pre class="codigo"><code>
+          // Creación de un objeto literal
+            const miObjeto = {
+            nombre: "Producto A", // propiedad: valor
+            precio: 25.99,
+            disponible: true,
+            mostrarDetalles: function() { // método: función dentro del objeto
+                console.log(`Nombre: ${this.nombre}, Precio: $${this.precio}, Disponible: ${this.disponible}`);
+            }
+            };
+            console.log(miObjeto);
+            miObjeto.mostrarDetalles();
+        </code></pre>
+
+        <!--Acceso a propiedades-->
+        <li><strong> Acceso a propiedades (notación de punto y corchetes): </strong> Hay dos formas principales de acceder a las propiedades de un objeto:</li>
+        <p><strong>Notación de punto (.):</strong>Se utiliza cuando conoces el nombre de la propiedad y este es un identificador válido (sin espacios ni caracteres especiales al inicio).</p>
+        <pre class="codigo"><code>
+         console.log(miObjeto.nombre); // Salida: Producto A
+         console.log(miObjeto.precio); // Salida: 25.99
+        </code></pre>
+
+        <p><strong>Notación de corchetes ([]):</strong>Es más flexible. Se utiliza cuando el nombre de la propiedad está almacenado en una variable o contiene espacios o caracteres especiales. También puedes usarla con cadenas dinámicas.</p>
+        <pre class="codigo"><code>
+         console.log(miObjeto["disponible"]); // Salida: true
+        const propiedad = "precio";
+        console.log(miObjeto[propiedad]); // Salida: 25.99
+        </code></pre>
+
+         <!--this dentro de objetos-->
+        <li><strong> this dentro de objetos </strong> La palabra clave this dentro de un método de un objeto se refiere al propio objeto que llamó al método.
+        Es importante notar que el valor de this puede cambiar dependiendo de cómo se llama la función. Sin embargo, dentro de los métodos de un objeto definidos de la manera tradicional, this generalmente se refiere al objeto.</li>
+        <pre class="codigo"><code>
+         const otroObjeto = {
+                                marca: "Samsung",
+                                modelo: "Galaxy S21",
+                                descripcion: function() {
+                                return `Este es un ${this.marca} ${this.modelo}.`;
+                            }
+                    };
+        console.log(otroObjeto.descripcion()); // Salida: Este es un Samsung Galaxy S21.
+        </code></pre>
+    
+    </ul>
+    </div>
+</div>
+</body>
+<script src="/temario/js/objetos/objetos.js"></script>
+</html>

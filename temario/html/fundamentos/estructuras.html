@@ -13,7 +13,7 @@
 
     <nav>
     <a href="/index.html">Inicio</a>
-    <a href="/temario/temario.html">Temario</a>
+    <a href="/temario/html/temario.html">Temario</a>
     <a href="#">Práctica</a>
     <a href="/tips/tips.html">Tips</a>
   </nav>
@@ -93,8 +93,62 @@
             </code></pre>
         </ul>
 
-        
+        <!-- BUCLES -->
+        <h2>Bucles</h2>
+        <p>Los bucles te permiten ejecutar un bloque de código
+             repetidamente hasta que se cumpla una determinada condición.</p>
+        <ul>
+            <!-- FOR -->
+        <li><strong>FOR</strong>:El bucle for es útil cuando sabes cuántas veces quieres que se ejecute un bloque de código.
+             Consta de tres partes principales dentro de los paréntesis: </li>
+            <p><strong>Inicialización:</strong>Se ejecuta una sola vez al principio del bucle (generalmente para inicializar una variable contador).</p>
+            <p><strong>Condicion:</strong>Se evalúa en cada iteración. El bucle continúa mientras la condición sea verdadera.</p>
+            <p><strong>Incremento/Decremento:</strong> Se ejecuta al final de cada iteración (generalmente para actualizar la variable contador).</p> 
+            <h5>Ejemplo FOR:</h5>
+            <pre class="codigo"><code>
+            for (let i = 0; i &lt 5; i++) {
+            console.log("El valor de i es: " + i);
+            }
+            </code></pre>
+
+             <!-- WHILE -->
+        <li><strong>WHILE</strong>:El bucle while ejecuta un bloque de código mientras una condición especificada sea verdadera. La condición se evalúa antes de cada iteración </li>
+            <h5>Ejemplo WHILE:</h5>
+            <pre class="codigo"><code>
+           let contador = 0;
+            while (contador &lt 3) {
+            console.log("Contador: " + contador);
+            contador++;
+            }
+            </code></pre>
+
+            <!-- DO WHILE -->
+        <li><strong>DO WHILE</strong>:El bucle do-while es similar al while, pero la condición se evalúa después de la primera ejecución del bloque de código. Esto garantiza que el bloque de código se ejecute al menos una vez </li>
+            <h5>Ejemplo DO WHILE:</h5>
+            <pre class="codigo"><code>
+           let numero = 0;
+            do {
+            console.log("Número: " + numero);
+            numero++;
+            } while (numero &lt 2);
+            </code></pre>
+
+             <!-- FOR EACH -->
+        <li><strong>FOR EACH</strong>:El método forEach() se utiliza para iterar sobre los elementos de un array. Proporciona una función de callback que se ejecuta para cada elemento del array. </li>
+            <h5>Ejemplo FOR EACH:</h5>
+            <pre class="codigo"><code>
+           let colores = ["rojo", "verde", "azul"];
+            colores.forEach(function(color) {
+            console.log("Color: " + color);
+            });
+
+            // También se puede usar con una función de flecha (arrow function)
+            colores.forEach(color => console.log("Color (arrow): " + color));
+            </code></pre>
 
 
     </div>
         </div>
+</body>
+<script src="/temario/js/fundamentos/estructuras.js"></script>
+</html>

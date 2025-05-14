@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNCIONES AVANZADAS</title>
+  <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+  <header>
+    <h1>CALLSBACKS Y PROMESAS</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+<div class="contenedor">
+    <div class="contenido">
+
+        <!-- CALLSBACKS Y PROMESAS -->
+        <h2>CALLSBACKS Y PROMESAS</h2>
+        <p>Los callbacks y las promesas son patrones fundamentales para manejar operaciones asíncronas en JavaScript.
+             La asincronía es crucial para realizar tareas que llevan tiempo (como peticiones a servidores, lectura de archivos, interacciones con el usuario) sin bloquear el hilo principal de ejecución y mantener la aplicación responsiva.</p>
+        <ul>
+            <!--CALLSBACKS-->
+            <li><strong> CALLSBACKS: </strong>Un callback es una función que se pasa como argumento a otra función y se ejecuta en algún momento posterior, generalmente después de que una operación asíncrona se ha completado.</li>
+            <pre class="codigo"><code>
+            function hacerAlgoAsincrono(callback) {
+            setTimeout(function() {
+                const resultado = "Tarea completada";
+                callback(resultado); // Se llama al callback con el resultado
+            }, 2000); // Simula una operación de 2 segundos
+            }
+
+            function mostrarResultado(mensaje) {
+            console.log(mensaje);
+            }
+
+            hacerAlgoAsincrono(mostrarResultado); // Se pasa 'mostrarResultado' como callback
+            console.log("Mientras tanto..."); // Esto se ejecuta antes del callback
+            </code></pre>
+
+            <P>El problema con los callbacks anidados para manejar múltiples operaciones asíncronas es el llamado "callback hell" o "pirámide de la muerte", que puede hacer que el código sea difícil de leer y mantener.</P>
+        
+            <!--PROMESAS-->
+            <li><strong> PROMESAS: </strong>Una promesa es un objeto que representa el resultado eventual (éxito o fallo) de una operación asíncrona. Tiene tres estados posibles:</li>
+            <p><strong>pending: </strong>El estado inicial, la operación aún no se ha completado.</p>
+            <p><strong>fulfilled: </strong>La operación se completó con éxito y tiene un valor resultante</p>
+            <p><strong>rejected: </strong>La operación falló, generalmente con una razón o error.</p>
+            
+            <P>Las promesas proporcionan una forma más estructurada y legible de manejar la asincronía, evitando el callback hell.</P>
+            <p><strong>.then(onFulfilled): </strong>Este método se utiliza para registrar una función (onFulfilled) que se ejecutará si la promesa se resuelve (pasa al estado fulfilled). Recibe el valor de resolución de la promesa como argumento.</p>
+            <p><strong>.catch(onRejected): </strong> Este método se utiliza para registrar una función (onRejected) que se ejecutará si la promesa se rechaza (pasa al estado rejected). Recibe la razón del rechazo de la promesa como argumento.</p>
+            <p><strong>.finally(onFinally): </strong>Este método se utiliza para registrar una función (onFinally) que se ejecutará siempre, independientemente de si la promesa se resuelve o se rechaza. No recibe ningún argumento y su valor de retorno se ignora.</p>
+            
+            <pre class="codigo"><code>
+            function obtenerDatos() {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                const exito = true; // Simula éxito o fallo
+                if (exito) {
+                    resolve({ mensaje: "Datos obtenidos correctamente" });
+                } else {
+                    reject("Error al obtener los datos");
+                }
+                }, 1500);
+            });
+            }
+
+            obtenerDatos()
+            .then(function(resultado) {
+                console.log("Éxito:", resultado.mensaje);
+            })
+            .catch(function(error) {
+                console.error("Error:", error);
+            })
+            .finally(function() {
+                console.log("Operación finalizada");
+            });
+
+            console.log("Iniciando la obtención de datos..."); // Esto se ejecuta primero
+            </code></pre>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -23,19 +23,6 @@
         //variable sin declarar
         //console.log(mili);
 
-        //ambito de variable
-        console.log("Ambito de variable:");
-        //global 
-        let variableGlobal ="Soy una variable global";
-
-        function mostrarVariable(){
-            let variableLocal="Soy una variable local";
-            return variableLocal;
-        }
-
-        console.log(mostrarVariable(),
-         variableGlobal);
-
 // ==============================
 // Tipos de datos primitivos
 // ==============================

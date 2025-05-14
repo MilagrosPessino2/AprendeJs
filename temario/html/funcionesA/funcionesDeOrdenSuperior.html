@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNCIONES AVANZADAS</title>
+  <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+  <header>
+    <h1>FUNCIONES DE ORDEN SUPERIOR</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+<div class="contenedor">
+    <div class="contenido">
+             <!-- Funciones que devuelven funciones  -->
+        <h2>FUNCIONES QUE DEVUELVEN FUNCIONES</h2>
+        <p>Las funciones de orden superior son funciones que operan sobre otras funciones,
+             ya sea tomándolas como argumentos o devolviéndolas.</p>
+        <pre class="codigo"><code>
+            function crearMultiplicador(factor) {
+            return function(numero) {
+                return numero * factor;
+            };}
+            const duplicar = crearMultiplicador(2);
+            const triplicar = crearMultiplicador(3);
+
+            console.log(duplicar(5));   // Output: 10
+            console.log(triplicar(5));  // Output: 15
+            </code></pre>
+        
+
+        <!-- Funciones de orden superior  -->
+        <h2>FUNCIONES DE ORDEN SUPERIOR</h2>
+        <p>Las funciones de orden superior son funciones que operan sobre otras funciones, ya sea tomándolas como argumentos o devolviéndolas.</p>
+        <ul>
+            <!--map-->
+            <li><strong> map(callback): </strong> Ya lo vimos en el contexto de arrays, pero es importante recordar que map es una función de orden superior. Toma una función (callback) como argumento y la aplica a cada elemento de un array, devolviendo un nuevo array con los resultados.</li>
+            <pre class="codigo"><code>
+            let numeros = [1, 2, 3];
+            let dobles = numeros.map(function(numero) {
+            return numero * 2;
+            });
+            console.log(dobles); // Output: [2, 4, 6]
+            console.log(numeros); // Output: [1, 2, 3] (el array original no se modifica)
+            </code></pre>
+
+        <!--filter-->
+            <li><strong> filter(callback): </strong> Similar a map, filter también es una función de orden superior. Recibe una función (callback) que actúa como un predicado para cada elemento de un array. Devuelve un nuevo array con todos los elementos para los cuales el callback devuelve true.</li>
+            <pre class="codigo"><code>
+            const edades = [15, 22, 18, 30, 12];
+            const mayores = edades.filter(function(edad) { // La función anónima es el callback
+            return edad >= 18;
+            });
+            console.log(mayores);
+            </code></pre>
+
+        <!--filter-->
+            <li><strong> filter(callback): </strong> Similar a map, filter también es una función de orden superior. Recibe una función (callback) que actúa como un predicado para cada elemento de un array. Devuelve un nuevo array con todos los elementos para los cuales el callback devuelve true.</li>
+            <pre class="codigo"><code>
+            const edades = [15, 22, 18, 30, 12];
+            const mayores = edades.filter(function(edad) { // La función anónima es el callback
+            return edad >= 18;
+            });
+            console.log(mayores);
+            </code></pre>
+
+         <!--reduce-->
+            <li><strong> reduce(callback, valorInicial): </strong>reduce también es una función de orden superior. Toma una función (callback) que se aplica acumulativamente a los elementos de un array para reducirlos a un único valor. El callback recibe el acumulador y el elemento actual.</li>
+            <pre class="codigo"><code>
+            const precios = [10, 20, 5];
+            const total = precios.reduce(function(acumulador, precio) { // La función anónima es el callback
+            return acumulador + precio;
+            }, 0);
+            console.log(total); // Output: 35
+            </code></pre>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>

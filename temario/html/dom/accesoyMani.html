@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+  <header>
+    <h1>Acceso y Manipulación del DOM</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+<div class="contenedor">
+    <div class="contenido">
+        <!-- Acceso y manipulacion --> 
+        <ul>
+            <li><strong> Seleccion de elementos: </strong>JavaScript proporciona varios métodos para seleccionar elementos específicos dentro del DOM.</li>
+            <p><strong>document.getElementById(id): </strong>Selecciona un único elemento por su atributo id. Los IDs deben ser únicos dentro de un documento HTML.</p>
+            <pre class="codigo"><code>
+            const miTitulo = document.getElementById("titulo-principal");
+            console.log(miTitulo); // Devuelve el elemento con el ID "titulo-principal"
+            </code></pre>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNCIONES AVANZADAS</title>
+  <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+  <header>
+    <h1>ASINCRONIA</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+<div class="contenedor">
+    <div class="contenido">
+
+        <!-- ASINCRONIA -->
+        <h2>ASINCRONIA</h2>
+        <p>es un paradigma de programación donde las tareas pueden ejecutarse sin bloquear el flujo principal del programa. Esto es esencial para aplicaciones que necesitan realizar operaciones que llevan tiempo sin congelar la interfaz de usuario o la ejecución de otras tareas.</p>
+        <h3>Funciones setTimeout y setInterval:</h3>
+        <p> funciones nativas de JavaScript que permiten ejecutar código de forma asíncrona después de un cierto período de tiempo.</P>
+        <ul>
+            <li><strong>setTimeout(callback, delay): </strong> Ejecuta la función callback una sola vez después de un retraso de delay milisegundos.</li>
+            <pre class="codigo"><code>
+          console.log("Inicio");
+            setTimeout(function() {
+            console.log("Se ejecutó después de 2 segundos");
+            }, 2000);
+            console.log("Fin");
+            // Output (aproximadamente):
+            // Inicio
+            // Fin
+            // Se ejecutó después de 2 segundos
+            </code></pre>
+
+            <li><strong>setInterval(callback, delay): </strong> Ejecuta la función callback repetidamente a intervalos fijos de delay milisegundos. Es importante usar clearInterval(id) para detener la ejecución del intervalo cuando ya no sea necesario, para evitar fugas de memoria y comportamientos inesperados.</li>
+            <pre class="codigo"><code>
+          let contador = 0;
+            const intervaloId = setInterval(function() {
+            contador++;
+            console.log("Contador:", contador);
+            if (contador >= 5) {
+                clearInterval(intervaloId); // Detiene el intervalo después de 5 ejecuciones
+                console.log("Intervalo detenido");
+            }
+            }, 1000);
+            </code></pre>
+        </ul>
+
+        <h3>Manejo de promesas</h3>
+        <p>Como se explicó anteriormente, las promesas (.then, .catch, .finally) y la sintaxis async/await son las formas modernas y preferidas de manejar operaciones asíncronas en JavaScript, ya que ofrecen una mejor estructura y manejo de errores en comparación con los callbacks tradicionales.</p>
+        <h3>Manejo de errores con try/catch</h3>
+        <p>El bloque try/catch se utiliza para manejar errores síncronos que pueden ocurrir durante la ejecución del código. Cuando se trabaja con funciones async/await, también se puede usar try/catch para capturar errores que resulten del rechazo de una promesa dentro del bloque try.</p>
+            <pre class="codigo"><code>
+            async function funcionConPosibleError() {
+            try {
+                // Código que puede lanzar un error o una promesa rechazada
+                const resultado = await algunaPromesaQuePuedeFallar();
+                console.log("Resultado:", resultado);
+            } catch (error) {
+                // Código para manejar el error
+                console.error("¡Ocurrió un error!", error);
+            } finally {
+                // Código que se ejecuta siempre, haya o no error
+                console.log("Finalizando la función");
+            }
+            }
+
+            funcionConPosibleError();
+            </code></pre>
+    </div>
+</div>
+</body>
+</html>

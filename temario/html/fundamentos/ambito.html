@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMBITO</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+    <header>
+    <h1>AMBITO Y CONTEXTO</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+
+  <div class="contenedor">
+    <div class="contenido">
+        <ul>
+        <!-- THIS -->
+        <li><strong>THIS en JavaScript: </strong> La palabra clave this se refiere al objeto al que pertenece una función cuando se ejecuta. Su valor puede variar dependiendo de cómo se llama la función</li>
+        <P><STRong>Llamada implícita:</STRong>Cuando una función es llamada como un método de un objeto, this se refiere a ese objeto.</P>
+        <pre class="codigo"><code>
+           const persona = {
+            nombre: "Ana",
+            saludar: function() {
+                console.log(`Hola, mi nombre es ${this.nombre}`);
+            }
+            };
+            persona.saludar(); // 'this' dentro de 'saludar' se refiere a 'persona'
+            </code></pre>
+
+        <P><STRong>Llamada explícita: </STRong> Puedes establecer explícitamente el valor de this utilizando los métodos call(), apply() y bind().</P>
+        <pre class="codigo"><code>
+           function presentarse(profesion) {
+            console.log(`Mi nombre es ${this.nombre} y soy ${profesion}`);
+            }
+
+            const otraPersona = { nombre: "Pedro" };
+            presentarse.call(otraPersona, "ingeniero");   // this es otraPersona
+            presentarse.apply(otraPersona, ["músico"]);  // this es otraPersona
+            const saludarPedro = presentarse.bind(otraPersona, "artista"); // Crea una nueva función con 'this' atado
+            saludarPedro();                                // Llama a la nueva función
+            </code></pre>
+
+        <P><STRong>En el scope global: </STRong> Cuando this se usa fuera de cualquier función o en una función no adjunta a un objeto (en modo no estricto), se refiere al objeto global (window en navegadores, global en Node.js). En modo estricto ("use strict";), this es undefined en este contexto.</P>
+        <pre class="codigo"><code>
+        console.log(this === window); // true (en navegadores, fuera de funciones)
+        function mostrarThis() {
+        console.log(this);
+        }
+        mostrarThis(); // window (en modo no estricto) o undefined (en modo estricto)
+        </code></pre>
+
+        <!--AMBITO DE LAS VARIABLES-->
+        <li><P><STRong>Ámbito de variables: </STRong> Las variables declaradas fuera de funciones son <strong>globales</strong>. Dentro de funciones son <strong>locales</strong></P>
+        <p>En páginas web, las variables globales son propiedades del objeto <code>window</code>. Por ejemplo, puedes acceder a <code>window.phoneNumber</code> desde un iframe con <code>parent.phoneNumber</code>.</p> </li>
+        
+        <pre class="codigo"><code>
+        //global 
+        let variableGlobal ="Soy una variable global";
+
+        function mostrarVariable(){
+            let variableLocal="Soy una variable local";
+            return variableLocal;
+        }
+
+        console.log(mostrarVariable(),
+         variableGlobal);
+        </code></pre>
+
+        <!--CLOSURES-->
+        <li><P><STRong>CLOSURES: </STRong> Un closure es una función que "recuerda" el entorno léxico (las variables que estaban en ámbito cuando se creó la función) incluso después de que la función exterior ha terminado de ejecutarse. Permiten acceder a variables del ámbito exterior desde el ámbito interior.</P></li>
+        
+        <pre class="codigo"><code>
+        function crearContador() {
+        let contador = 0;
+        return {
+            incrementar: function() {
+            contador++;
+            },
+            obtenerValor: function() {
+            return contador;
+            }
+        };
+        }
+
+        const miContador = crearContador();
+        miContador.incrementar();
+        miContador.incrementar();
+        console.log(miContador.obtenerValor()); // Imprime 2
+        // La función interna (incrementar y obtenerValor) "cierra" sobre la variable 'contador'
+        </code></pre>
+
+        <!--Scope (alcance) y Hoisting (elevación):-->
+        <li><STRong>Scope (alcance) y Hoisting (elevación): </STRong>
+        <p><strong>Scope (alcance):</strong>se refiere a las reglas que determinan la accesibilidad de las variables.</p>
+    <p><strong>Hoisting (elevación):</strong>JavaScript tiene un comportamiento llamado hoisting, donde las declaraciones de variables (con var) y funciones (declaraciones de función) se mueven conceptualmente al principio de su ámbito (ya sea global o de función) durante la fase de compilación. Sin embargo, las inicializaciones no se elevan.</p></li>
+        
+        <pre class="codigo"><code>
+        console.log(x); // undefined (la declaración de 'x' se eleva, pero no su inicialización)
+        var x = 10;
+
+        miFuncionElevada(); // "Hola!" (la declaración de la función se eleva)
+
+        function miFuncionElevada() {
+        console.log("Hola!");
+        }
+
+        // miFuncionExpresion(); // Esto generaría un error (la inicialización no se eleva)
+        var miFuncionExpresion = function() {
+        console.log("Adiós!");
+        };
+
+        // Con let y const, también hay hoisting, pero no se inicializan.
+        // Intentar acceder a ellas antes de su declaración resulta en un error (Temporal Dead Zone).
+        // console.log(y); // Error: Cannot access 'y' before initialization
+        let y = 20;
+        // console.log(z); // Error: Cannot access 'z' before initialization
+        const z = 30;
+        </code></pre>      
+    </ul>
+    </div>
+</div>
+</body>
+<script src="/temario/js/fundamentos/ambito.js"></script>
+</html>

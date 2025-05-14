@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6+ en JavaScript</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+    <header>
+        <h1>ES6+ (ECMAScript 2015 y versiones posteriores)</h1>
+    </header>
+
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/temario/html/temario.html">Temario</a>
+        <a href="#">Práctica</a>
+        <a href="/tips/tips.html">Tips</a>
+    </nav>
+<div class="contenedor">
+    <div class="contenido">
+
+        <h2>6. ES6+ (ECMAScript 2015 y versiones posteriores)</h2>
+        <p>ECMAScript 2015 (ES6) y las versiones posteriores han introducido una gran cantidad de características que hacen que el código JavaScript sea más moderno, conciso y legible.</p>
+
+
+        <h3>Desestructuración</h3>
+        <p>La desestructuración es una sintaxis que permite extraer valores de arrays u objetos y asignarlos a variables de una manera más concisa y legible.</p>
+
+        <h4>Desestructuración de Objetos</h4>
+        <p>Permite extraer propiedades de un objeto directamente en variables. Se utilizan llaves <code>{}</code> para especificar las propiedades a extraer.</p>
+        <pre class="codigo"><code>
+        const persona = {
+        nombre: "Ana",
+        edad: 30,
+        ciudad: "Buenos Aires"
+        };
+
+        const { nombre, edad } = persona; // Extrae 'nombre' y 'edad' a variables
+        console.log(nombre); // Output: Ana
+        console.log(edad);  // Output: 30
+
+        // Asignar a nombres de variables diferentes
+        const { ciudad: lugar } = persona;
+        console.log(lugar); // Output: Buenos Aires
+
+        // Valores por defecto si la propiedad no existe
+        const { profesion = "Desconocido" } = persona;
+        console.log(profesion); // Output: Desconocido
+
+        // Combinar con el operador rest para obtener las propiedades restantes
+        const { nombre: nombrePersona, ...resto } = persona;
+        console.log(nombrePersona); // Output: Ana
+        console.log(resto);       // Output: { edad: 30, ciudad: 'Buenos Aires' }
+        </code></pre>
+
+        <h4>Desestructuración de Arrays</h4>
+        <p>Permite extraer elementos de un array y asignarlos a variables. Se utilizan corchetes <code>[]</code> para especificar los elementos a extraer por su posición.</p>
+        <pre class="codigo"><code>
+        const colores = ["rojo", "verde", "azul"];
+
+        const [primerColor, segundoColor] = colores;
+        console.log(primerColor);  // Output: rojo
+        console.log(segundoColor); // Output: verde
+
+        // Omitir elementos
+        const [, , tercerColor] = colores;
+        console.log(tercerColor); // Output: azul
+
+        // Asignar el resto de los elementos a un nuevo array con el operador rest
+        const [primerElemento, ...restoElementos] = colores;
+        console.log(primerElemento);   // Output: rojo
+        console.log(restoElementos); // Output: [ 'verde', 'azul' ]
+
+        // Valores por defecto si el elemento no existe (útil en arrays más cortos)
+        const [a, b, c, d = "amarillo"] = colores;
+        console.log(d); // Output: amarillo (ya que el array 'colores' solo tiene 3 elementos)
+        </code></pre>
+
+        <h3>Operador de Propagación (...) [Spread Operator]</h3>
+        <p>El operador de propagación <code>(...)</code> tiene varios usos poderosos:</p>
+        <ul>
+            <li><strong>Expandir un iterable (como un array o un string) en lugares donde se esperan cero o más argumentos o elementos:</strong></li>
+        </ul>
+        <pre class="codigo"><code>
+        const partes = ["hombro", "rodillas"];
+        const cuerpo = ["cabeza", ...partes, "pies"];
+        console.log(cuerpo); // Output: [ 'cabeza', 'hombro', 'rodillas', 'pies' ]
+
+        const letras = "Hola";
+        const letrasArray = [...letras];
+        console.log(letrasArray); // Output: [ 'H', 'o', 'l', 'a' ]
+
+        function sumar(a, b, c) {
+        return a + b + c;
+        }
+        const numeros = [1, 2, 3];
+        console.log(sumar(...numeros)); // Output: 6
+        </code></pre>
+        <ul>
+            <li><strong>Crear copias superficiales de arrays u objetos:</strong></li>
+        </ul>
+        <pre class="codigo"><code>
+        const originalArray = [1, 2, 3];
+        const copiaArray = [...originalArray];
+        copiaArray.push(4);
+        console.log(originalArray); // Output: [ 1, 2, 3 ] (no se modifica)
+        console.log(copiaArray);   // Output: [ 1, 2, 3, 4 ]
+
+        const originalObjeto = { a: 1, b: 2 };
+        const copiaObjeto = { ...originalObjeto, c: 3 };
+        console.log(originalObjeto); // Output: { a: 1, b: 2 } (no se modifica)
+        console.log(copiaObjeto);   // Output: { a: 1, b: 2, c: 3 }
+
+        // Combinar objetos
+        const objeto1 = { x: 1 };
+        const objeto2 = { y: 2 };
+        const combinado = { ...objeto1, ...objeto2, x: 10 }; // Si hay claves duplicadas, la última prevalece
+        console.log(combinado); // Output: { x: 10, y: 2 }
+        </code></pre>
+
+        <h3>Operador de Agrupación de Restos (...) [Rest Operator]</h3>
+        <p>El operador de agrupación de restos <code>(...)</code> se utiliza en contextos donde se recogen el "resto" de los argumentos o elementos en un array.</p>
+        <ul>
+            <li><strong>En parámetros de funciones:</strong> Permite que una función acepte un número indefinido de argumentos como un array.</li>
+        </ul>
+        <pre class="codigo"><code>
+        function miFuncion(primerArg, ...otrosArgs) {
+        console.log("Primer argumento:", primerArg);
+        console.log("Otros argumentos:", otrosArgs);
+        }
+
+        miFuncion(1, 2, 3, 4);
+        // Output:
+        // Primer argumento: 1
+        // Otros argumentos: [ 2, 3, 4 ]
+        </code></pre>
+        <ul>
+            <li><strong>En desestructuración (ya visto anteriormente):</strong> Para recoger las propiedades restantes de un objeto o los elementos restantes de un array.</li>
+        </ul>
+
+        <h3>Template Literals (Plantillas de Cadena)</h3>
+        <p>Los template literals son una forma más flexible y poderosa de crear cadenas en JavaScript. Se delimitan con backticks (<code>`</code>) en lugar de comillas simples o dobles. Permiten la interpolación de variables y expresiones directamente dentro de la cadena.</p>
+        <pre class="codigo"><code>
+        const nombre = "Carlos";
+        const edad = 25;
+
+        // Interpolación de variables
+        const saludo = `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+        console.log(saludo); // Output: Hola, mi nombre es Carlos y tengo 25 años.
+
+        // Pueden contener expresiones
+        const x = 10;
+        const y = 5;
+        const resultado = `La suma de ${x} y ${y} es ${x + y}.`;
+        console.log(resultado); // Output: La suma de 10 y 5 es 15.
+
+        // Pueden abarcar múltiples líneas sin necesidad de concatenación
+        const multilinea = `Esta es
+        una cadena
+        de varias líneas.`;
+        console.log(multilinea);
+        // Output:
+        // Esta es
+        // una cadena
+        // de varias líneas.
+        </code></pre>
+
+        <h3>Módulos (<code>import</code>/<code>export</code> y <code>export default</code>)</h3>
+        <p>Los módulos en ES6 permiten dividir el código JavaScript en archivos separados (módulos), lo que mejora la organización, el mantenimiento y la reutilización del código.</p>
+        <ul>
+            <li><strong><code>export</code>:</strong> Se utiliza para hacer que variables, funciones, clases, etc., estén disponibles para ser importadas por otros módulos. Se pueden tener múltiples exportaciones con nombre.</li>
+        </ul>
+        <pre class="codigo"><code>
+        // archivo: moduloA.js
+        export const PI = 3.14159;
+        export function sumar(a, b) {
+        return a + b;
+        }
+        export class Circulo {
+        constructor(radio) {
+            this.radio = radio;
+        }
+        area() {
+            return PI * this.radio * this.radio;
+        }
+        }
+        </code></pre>
+        <ul>
+            <li><strong><code>export default</code>:</strong> Se utiliza para exportar un único valor por módulo como la exportación por defecto. Puede ser una variable, función, clase, etc. Al importar un módulo con <code>export default</code>, no se utilizan llaves <code>{}</code> alrededor del nombre de la importación.</li>
+        </ul>
+        <pre class="codigo"><code>
+        // archivo: moduloB.js
+        const mensaje = "Hola desde el módulo B";
+        export default mensaje;
+
+        // También se puede exportar por defecto una función o clase directamente
+        // export default function saludar(nombre) {
+        //   return `¡Hola, ${nombre}!`;
+        // }
+        </code></pre>
+        <ul>
+            <li><strong><code>import</code>:</strong> Se utiliza en un módulo para importar valores que han sido exportados desde otros módulos.</li>
+        </ul>
+        <pre class="codigo"><code>
+        // archivo: main.js
+        import { PI, sumar, Circulo } from './moduloA.js'; // Importación con nombre
+        import mensajeDesdeB from './moduloB.js';      // Importación por defecto (se le puede dar cualquier nombre)
+
+        console.log(PI);
+        console.log(sumar(5, 3));
+        const miCirculo = new Circulo(10);
+        console.log(miCirculo.area());
+        console.log(mensajeDesdeB);
+        </code></pre>
+        <p>Para que los módulos funcionen en un entorno de navegador, a menudo se necesita un bundler de módulos como Webpack o Parcel para empaquetar los módulos en un solo archivo o en varios archivos optimizados. En entornos de Node.js, el sistema de módulos CommonJS (<code>require</code>/<code>module.exports</code>) ha sido tradicionalmente utilizado, pero el soporte para los módulos ES6 está en aumento.</p>
+
+        <p>Estas características de ES6+ han transformado la forma en que se escribe JavaScript, haciéndolo más expresivo y facilitando la creación de aplicaciones más complejas y mantenibles. ¡Sigue explorando y utilizando estas funcionalidades en tus proyectos!</p>
+    </div>
+</div>
+</body>
+</html>

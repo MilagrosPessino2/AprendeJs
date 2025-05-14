@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Errores en JavaScript</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+    <header>
+        <h1>7. Manejo de Errores</h1>
+    </header>
+
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/temario/html/temario.html">Temario</a>
+        <a href="#">Práctica</a>
+        <a href="/tips/tips.html">Tips</a>
+    </nav>
+<div class="contenedor">
+    <div class="contenido">
+        <h3>Manejo de Excepciones</h3>
+        <p>El manejo de errores es crucial para escribir código robusto que pueda anticipar y responder de manera controlada a situaciones inesperadas. JavaScript proporciona mecanismos para capturar y manejar errores, evitando que la aplicación se detenga abruptamente.</p>
+
+
+        <p><strong><code>try/catch</code>:</strong> El bloque <code>try</code> contiene el código que podría generar un error (una excepción). Si ocurre un error dentro del bloque <code>try</code>, la ejecución se detiene inmediatamente y el control pasa al bloque <code>catch</code>. El bloque <code>catch</code> contiene el código que se ejecutará para manejar el error.</p>
+        <pre class="codigo"><code>
+        try {
+        // Código que puede lanzar un error
+        const resultado = 10 / 0; // Esto generará un error (Infinity no es un error que se lance)
+        console.log("Resultado:", resultado); // Esta línea no se ejecutará si hay un error antes
+        } catch (error) {
+        // Código para manejar el error
+        console.error("¡Ocurrió un error!", error.message);
+        }
+
+        console.log("La ejecución continúa después del bloque try/catch.");
+        </code></pre>
+        <p>Es importante notar que <code>try/catch</code> captura errores en tiempo de ejecución. Algunos tipos de "errores" en JavaScript, como dividir por cero, resultan en valores especiales (<code>Infinity</code>, <code>NaN</code>) en lugar de lanzar excepciones que <code>catch</code> pueda capturar directamente en algunos contextos. Sin embargo, otros errores, como intentar acceder a una propiedad de <code>null</code> o llamar a un método inexistente, sí lanzarán excepciones.</p>
+
+        <p><strong><code>throw</code> para lanzar errores:</strong> La sentencia <code>throw</code> se utiliza para lanzar explícitamente un error. Puedes lanzar objetos <code>Error</code> genéricos o instancias de tipos de error más específicos. Esto es útil para indicar condiciones de error personalizadas en tu código.</p>
+        <pre class="codigo"><code>
+        function verificarEdad(edad) {
+        if (edad &lt 0) {
+            throw new Error("La edad no puede ser negativa.");
+        }
+        if (edad &LT 18) {
+            throw new Error("Debes ser mayor de edad.");
+        }
+        console.log("Edad válida:", edad);
+        }
+
+        try {
+        verificarEdad(15);
+        } catch (error) {
+        console.error("Error:", error.message);
+        }
+
+        try {
+        verificarEdad(-5);
+        } catch (error) {
+        console.error("Error:", error.message);
+        }
+
+        try {
+        verificarEdad(20);
+        } catch (error) {
+        console.error("Error:", error.message);
+        }
+        </code></pre>
+
+        <p><strong><code>finally</code>:</strong> El bloque <code>finally</code> se ejecuta siempre después del bloque <code>try</code> y, opcionalmente, del bloque <code>catch</code>, independientemente de si se lanzó o no un error. Es útil para realizar tareas de limpieza que deben ocurrir sin importar el resultado de la operación en el bloque <code>try</code> (por ejemplo, cerrar archivos, liberar recursos).</p>
+        <pre class="codigo"><code>
+        function dividir(a, b) {
+        try {
+            if (b === 0) {
+            throw new Error("No se puede dividir por cero.");
+            }
+            return a / b;
+        } catch (error) {
+            console.error("Error en la división:", error.message);
+            return NaN; // O algún otro valor indicativo de error
+        } finally {
+            console.log("La operación de división ha finalizado.");
+        }
+        }
+
+        console.log(dividir(10, 2));
+        console.log(dividir(5, 0));
+        console.log(dividir(8, 4));
+        </code></pre>
+
+        <h3><code>Error</code> objects (como <code>Error</code>, <code>TypeError</code>, etc.)</h3>
+        <p>JavaScript proporciona varios tipos de objetos <code>Error</code> integrados que se pueden utilizar para representar diferentes tipos de errores. Heredan de la clase base <code>Error</code> y a menudo proporcionan información más específica sobre la naturaleza del error. Algunos de los tipos de error comunes incluyen:</p>
+        <ul>
+            <li><code>Error</code>: El tipo de error genérico. Útil para errores personalizados.</li>
+            <li><code>TypeError</code>: Indica un error relacionado con el tipo de dato esperado. Por ejemplo, intentar llamar a un método en un valor que no es de ese tipo.</li>
+            <li><code>ReferenceError</code>: Indica que se ha intentado acceder a una variable que no está definida.</li>
+            <li><code>SyntaxError</code>: Indica un error en la sintaxis del código JavaScript (generalmente detectado en la fase de análisis).</li>
+            <li><code>RangeError</code>: Indica un valor que está fuera de un rango permitido.</li>
+            <li><code>URIError</code>: Indica un problema con la codificación o decodificación de URIs.</li>
+            <li><code>EvalError</code>: Indica un error ocurrido en la función global <code>eval()</code> (menos común en el código moderno).</li>
+        </ul>
+        <p>Al lanzar errores, es una buena práctica usar el tipo de error más apropiado para la situación, ya que esto puede facilitar la depuración y el manejo específico de diferentes tipos de errores si es necesario.</p>
+        <pre class="codigo"><code>
+        function procesar(valor) {
+        if (typeof valor !== 'number') {
+            throw new TypeError("El valor debe ser un número.");
+        }
+        if (valor &lt 0 || valor > 100) {
+            throw new RangeError("El valor debe estar entre 0 y 100.");
+        }
+        console.log("Valor procesado:", valor);
+        }
+
+        try {
+        procesar("abc");
+        } catch (error) {
+        if (error instanceof TypeError) {
+            console.error("¡Error de tipo!", error.message);
+        } else {
+            console.error("¡Otro error!", error.message);
+        }
+        }
+
+        try {
+        procesar(150);
+        } catch (error) {
+        if (error instanceof RangeError) {
+            console.error("¡Error de rango!", error.message);
+        } else {
+            console.error("¡Otro error!", error.message);
+        }
+        }
+        </code></pre>
+
+        <p>El manejo adecuado de errores es esencial para crear aplicaciones robustas y fáciles de depurar. Al utilizar <code>try/catch</code>, <code>throw</code>, <code>finally</code> y los diferentes tipos de objetos <code>Error</code>, puedes controlar el flujo de tu programa ante situaciones inesperadas y proporcionar una mejor experiencia al usuario. ¡Sigue practicando el manejo de errores en tu código! Si tienes más preguntas, no dudes en consultarme.</p>
+    </div>
+</div>
+</body>
+</html>

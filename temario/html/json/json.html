@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON y APIs en JavaScript</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+    <header>
+        <h1>8. JSON y APIs</h1>
+    </header>
+
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/temario/html/temario.html">Temario</a>
+        <a href="#">Práctica</a>
+        <a href="/tips/tips.html">Tips</a>
+    </nav>
+<div class="contenedor">
+    <div class="contenido">
+
+        <h3>Trabajar con JSON</h3>
+        <p>El manejo de JSON y el consumo de APIs son habilidades fundamentales en el desarrollo web moderno, ya que permiten a las aplicaciones interactuar con servidores y otros servicios para intercambiar datos.</p>
+
+        <p><strong>JSON (JavaScript Object Notation)</strong> es un formato de datos ligero para el intercambio de información. Es fácil de leer y escribir para los humanos, y fácil de analizar y generar para las máquinas. Se basa en un subconjunto del lenguaje JavaScript, aunque es independiente del lenguaje y se utiliza en muchos entornos de programación.</p>
+        <p>Las estructuras básicas de JSON son:</p>
+        <ul>
+            <li><strong>Objetos:</strong> Colecciones de pares clave-valor, donde las claves son strings y los valores pueden ser strings, números, booleanos, null, otros objetos o arrays. Se representan con llaves <code>{}</code>.</li>
+            <li><strong>Arrays:</strong> Listas ordenadas de valores, que pueden ser de cualquier tipo JSON. Se representan con corchetes <code>[]</code>.</li>
+        </ul>
+        <p>JavaScript proporciona dos métodos esenciales para trabajar con JSON:</p>
+
+        <h4><code>JSON.parse(jsonString)</code></h4>
+        <p>Este método toma una cadena JSON (<code>jsonString</code>) como argumento y la convierte en un objeto o array de JavaScript. Si la cadena JSON no tiene un formato válido, lanzará un <code>SyntaxError</code>.</p>
+        <pre class="codigo"><code>
+const jsonDatos = '{"nombre": "Elena", "edad": 28, "ciudad": "Madrid"}';
+const objetoJS = JSON.parse(jsonDatos);
+console.log(objetoJS);
+console.log(objetoJS.nombre); // Output: Elena
+console.log(objetoJS.edad);  // Output: 28
+
+const jsonArray = '[10, 20, "tres", true, null]';
+const arrayJS = JSON.parse(jsonArray);
+console.log(arrayJS);
+console.log(arrayJS[2]); // Output: tres
+
+try {
+  const jsonInvalido = '{"clave": valor}';
+  JSON.parse(jsonInvalido); // Esto lanzará un SyntaxError
+} catch (error) {
+  console.error("Error al parsear JSON:", error.message);
+}
+        </code></pre>
+
+        <h4><code>JSON.stringify(value)</code></h4>
+        <p>Este método toma un valor de JavaScript (<code>value</code>) (como un objeto o un array) y lo convierte en una cadena JSON.</p>
+        <pre class="codigo"><code>
+const objetoJStoJSON = { nombre: "Carlos", profesion: "Ingeniero", activo: true };
+const cadenaJSON = JSON.stringify(objetoJStoJSON);
+console.log(cadenaJSON); // Output: {"nombre":"Carlos","profesion":"Ingeniero","activo":true}
+
+const arrayJStoJSON = [1, "dos", false, { id: 1 }];
+const cadenaJSONArray = JSON.stringify(arrayJStoJSON);
+console.log(cadenaJSONArray); // Output: [1,"dos",false,{"id":1}]
+
+// El método stringify tiene parámetros opcionales para formatear la salida
+const objetoFormateado = JSON.stringify(objetoJStoJSON, null, 2); // El '2' indica la cantidad de espacios para la indentación
+console.log(objetoFormateado);
+/*
+{
+  "nombre": "Carlos",
+  "profesion": "Ingeniero",
+  "activo": true
+}
+*/
+        </code></pre>
+
+        <h3>Consumo de APIs</h3>
+        <p>Una <strong>API (Application Programming Interface)</strong> es un conjunto de reglas y protocolos que permiten que diferentes aplicaciones de software se comuniquen entre sí. Muchas aplicaciones web modernas consumen APIs para obtener datos de servidores remotos.</p>
+        <p>El método <code>fetch</code> es la forma estándar en JavaScript para realizar solicitudes HTTP (como GET, POST, PUT, DELETE) a APIs. <code>fetch</code> devuelve una promesa que se resuelve con la respuesta del servidor (un objeto <code>Response</code>).</p>
+
+        <h4>Uso de <code>fetch</code> para hacer solicitudes HTTP:</h4>
+        <pre class="codigo"><code>
+const url = 'https://jsonplaceholder.typicode.com/todos/1'; // Una API de prueba
+
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json(); // Parsea el cuerpo de la respuesta como JSON y devuelve otra promesa
+  })
+  .then(data => {
+    console.log('Datos recibidos:', data);
+    // Aquí puedes trabajar con los datos JSON
+  })
+  .catch(error => {
+    console.error('Error al obtener datos:', error);
+    // Aquí puedes manejar los errores de la solicitud
+  });
+
+console.log('Solicitud fetch iniciada...'); // Esto se ejecuta antes de que la promesa se resuelva
+        </code></pre>
+        <p>En este ejemplo:</p>
+        <ul>
+            <li><code>fetch(url)</code> inicia una solicitud GET a la URL especificada y devuelve una promesa.</li>
+            <li>El primer <code>.then()</code> recibe el objeto <code>Response</code>. Se verifica si la respuesta fue exitosa (<code>response.ok</code>). Si no lo fue, se lanza un error.</li>
+            <li><code>response.json()</code> devuelve otra promesa que se resuelve con el cuerpo de la respuesta parseado como un objeto JavaScript.</li>
+            <li>El segundo <code>.then()</code> recibe los datos JSON parseados y los muestra en la consola.</li>
+            <li><code>.catch()</code> captura cualquier error que ocurra durante la solicitud o el procesamiento de la respuesta.</li>
+        </ul>
+
+        <p>Para realizar diferentes tipos de solicitudes (POST, PUT, DELETE), se puede pasar un segundo argumento a <code>fetch</code> con un objeto de opciones que especifica el método HTTP, los encabezados (<code>headers</code>), el cuerpo de la solicitud (<code>body</code>), etc.</p>
+        <pre class="codigo"><code>
+const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+const nuevoPost = {
+  title: 'Mi Nuevo Post',
+  body: 'Este es el contenido de mi nuevo post.',
+  userId: 1
+};
+
+fetch(apiUrl, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(nuevoPost)
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Post creado:', data);
+  })
+  .catch(error => {
+    console.error('Error al crear el post:', error);
+  });
+        </code></pre>
+
+        <h4>Manejo de respuestas y errores en las promesas:</h4>
+        <p>Como se vio en los ejemplos anteriores, el manejo de las respuestas de las APIs y los posibles errores se realiza utilizando las promesas y sus métodos <code>.then()</code> y <code>.catch()</code>.</p>
+        <ul>
+            <li><strong>Manejo de respuestas:</strong> Dentro del bloque <code>.then()</code>, se recibe el objeto <code>Response</code>. Es importante verificar el estado de la respuesta (por ejemplo, <code>response.status</code> y <code>response.ok</code>) para asegurarse de que la solicitud fue exitosa. Luego, se utiliza un método como <code>response.json()</code>, <code>response.text()</code>, <code>response.blob()</code>, etc., para procesar el cuerpo de la respuesta según el tipo de contenido esperado. Estos métodos también devuelven promesas.</li>
+            <li><strong>Manejo de errores:</strong> El bloque <code>.catch()</code> se utiliza para capturar errores que pueden ocurrir en cualquier parte de la cadena de promesas, ya sea durante la solicitud inicial (<code>fetch</code>) o durante el procesamiento de la respuesta (por ejemplo, un error al parsear JSON). Es crucial incluir un bloque <code>.catch()</code> al final de la cadena de promesas para manejar los errores de manera adecuada y evitar que la aplicación falle silenciosamente.</li>
+        </ul>
+
+        <p>También se puede utilizar la sintaxis <code>async/await</code> para hacer que el código de consumo de APIs sea más legible y parezca síncrono:</p>
+        <pre class="codigo"><code>
+async function obtenerDatosDeAPI() {
+  const url = 'https://jsonplaceholder.typicode.com/todos/1';
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log('Datos recibidos (async/await):', data);
+    return data;
+  } catch (error) {
+    console.error('Error al obtener datos (async/await):', error);
+    throw error; // Re-lanzar el error para que pueda ser manejado por el llamador si es necesario
+  }
+}
+
+obtenerDatosDeAPI();
+        </code></pre>
+
+        <p>El trabajo con JSON y el consumo de APIs son habilidades esenciales para el desarrollo web front-end y back-end, permitiendo la creación de aplicaciones dinámicas que interactúan con datos de diversas fuentes. ¡Sigue practicando con diferentes APIs para familiarizarte con los flujos de trabajo comunes y el manejo de diferentes tipos de respuestas y errores! Si tienes más preguntas, no dudes en consultarme.</p>
+    </div>
+</div>
+</body>
+</html>

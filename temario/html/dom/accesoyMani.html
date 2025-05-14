@@ -1,35 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOM</title>
-  <link rel="stylesheet" href="/temario/css/temario.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
 </head>
 <body>
 
-  <header>
-    <h1>Acceso y Manipulación del DOM</h1>
-  </header>
+    <header>
+        <h1>Manejo del DOM</h1>
+        <h2>Acceso y Manipulación del DOM</h2>
+    </header>
 
     <nav>
-    <a href="/index.html">Inicio</a>
-    <a href="/temario/html/temario.html">Temario</a>
-    <a href="#">Práctica</a>
-    <a href="/tips/tips.html">Tips</a>
-  </nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/temario/html/temario.html">Temario</a>
+        <a href="#">Práctica</a>
+        <a href="/tips/tips.html">Tips</a>
+    </nav>
 <div class="contenedor">
     <div class="contenido">
-        <!-- Acceso y manipulacion --> 
         <ul>
-            <li><strong> Seleccion de elementos: </strong>JavaScript proporciona varios métodos para seleccionar elementos específicos dentro del DOM.</li>
+            <li><strong> Selección de Elementos: </strong>JavaScript proporciona varios métodos para seleccionar elementos específicos dentro del DOM.</li>
+
             <p><strong>document.getElementById(id): </strong>Selecciona un único elemento por su atributo id. Los IDs deben ser únicos dentro de un documento HTML.</p>
             <pre class="codigo"><code>
             const miTitulo = document.getElementById("titulo-principal");
             console.log(miTitulo); // Devuelve el elemento con el ID "titulo-principal"
             </code></pre>
+
+            <p><strong>document.getElementsByClassName(className): </strong>Selecciona una colección HTML (similar a un array, pero no es un array) de todos los elementos que tienen la clase CSS especificada en su atributo class.</p>
+            <pre class="codigo"><code>
+            const elementosLista = document.getElementsByClassName("item-lista");
+            console.log(elementosLista); // Devuelve una HTMLCollection de elementos con la clase "item-lista"
+            console.log(elementosLista[0]); // Acceder al primer elemento de la colección
+            </code></pre>
+
+            <p><strong>document.getElementsByTagName(tagName): </strong>Selecciona una colección HTML de todos los elementos con el nombre de etiqueta HTML especificado (por ejemplo, 'div', 'p', 'span', 'li').</p>
+            <pre class="codigo"><code>
+            const todosLosParrafos = document.getElementsByTagName("p");
+            console.log(todosLosParrafos); // Devuelve una HTMLCollection de todos los elementos &lt;p&gt;
+            console.log(todosLosParrafos.length); // Obtener la cantidad de párrafos
+            </code></pre>
+
+            <p><strong>document.querySelector(selector): </strong>Selecciona el primer elemento dentro del documento que coincide con el selector CSS especificado (puede ser un ID, una clase, un atributo, etc.). Es más versátil que los métodos anteriores para selecciones complejas.</p>
+            <pre class="codigo"><code>
+            const primerItemLista = document.querySelector(".item-lista"); // Selecciona el primer elemento con la clase "item-lista"
+            const elementoConId = document.querySelector("#mi-id"); // Selecciona el elemento con el ID "mi-id"
+            const enlaceDentroDeDiv = document.querySelector("div a"); // Selecciona el primer enlace dentro de un div
+            console.log(primerItemLista);
+            console.log(elementoConId);
+            console.log(enlaceDentroDeDiv);
+            </code></pre>
+
+            <p><strong>document.querySelectorAll(selector): </strong>Selecciona todos los elementos dentro del documento que coinciden con el selector CSS especificado. Devuelve un NodeList, que es similar a una HTMLCollection pero proporciona métodos más modernos como forEach.</p>
+            <pre class="codigo"><code>
+            const todosLosItemsLista = document.querySelectorAll(".item-lista"); // Selecciona todos los elementos con la clase "item-lista"
+            console.log(todosLosItemsLista); // Devuelve un NodeList
+            todosLosItemsLista.forEach(item => {
+              console.log(item.textContent); // Iterar sobre cada elemento del NodeList
+            });
+            </code></pre>
+
+            <li><strong> Modificación de Contenido, Atributos y Estilos: </strong>Una vez que se ha seleccionado un elemento del DOM, se pueden modificar sus propiedades.</li>
+
+            <p><strong>Contenido:</strong></p>
+            <ul>
+                <li><strong>element.textContent:</strong> Obtiene o establece el contenido de texto de un elemento y sus descendientes. No interpreta etiquetas HTML.</li>
+                <li><strong>element.innerHTML:</strong> Obtiene o establece el contenido HTML de un elemento. Interpreta las etiquetas HTML dentro de la cadena asignada. ¡Cuidado con su uso, ya que puede abrir vulnerabilidades XSS si se inserta contenido no seguro!</li>
+            </ul>
+            <pre class="codigo"><code>
+            const miParrafo = document.querySelector("#mi-parrafo");
+            console.log(miParrafo.textContent); // Obtener el texto del párrafo
+            miParrafo.textContent = "Nuevo texto para el párrafo.";
+
+            const miDiv = document.querySelector("#mi-div");
+            console.log(miDiv.innerHTML); // Obtener el HTML dentro del div
+            miDiv.innerHTML = "<p>Este es un <strong>texto importante</strong> dentro del div.</p>";
+            </code></pre>
+
+            <p><strong>Atributos:</strong></p>
+            <ul>
+                <li><strong>element.getAttribute(nombreAtributo):</strong> Obtiene el valor del atributo especificado.</li>
+                <li><strong>element.setAttribute(nombreAtributo, nuevoValor):</strong> Establece o modifica el valor del atributo especificado.</li>
+                <li><strong>element.removeAttribute(nombreAtributo):</strong> Elimina el atributo especificado.</li>
+            </ul>
+            <pre class="codigo"><code>
+            const miEnlace = document.querySelector("a");
+            console.log(miEnlace.getAttribute("href")); // Obtener el valor del atributo "href"
+            miEnlace.setAttribute("href", "https://www.nuevodestino.com");
+            miEnlace.setAttribute("target", "_blank");
+            miEnlace.removeAttribute("title");
+            </code></pre>
+
+            <p><strong>Estilos:</strong> Se pueden modificar los estilos CSS de un elemento directamente a través de su propiedad style. Las propiedades CSS en JavaScript suelen estar en camelCase (por ejemplo, backgroundColor en lugar de background-color).</p>
+            <pre class="codigo"><code>
+            const miBoton = document.querySelector("#mi-boton");
+            miBoton.style.backgroundColor = "lightblue";
+            miBoton.style.color = "white";
+            miBoton.style.padding = "10px 20px";
+            </code></pre>
+            <p>También se pueden manipular las clases CSS de un elemento a través de su propiedad <strong>classList</strong>, que proporciona métodos como <code>add()</code>, <code>remove()</code>, <code>toggle()</code> y <code>contains()</code>.</p>
+            <pre class="codigo"><code>
+            const miElemento = document.querySelector(".mi-elemento");
+            miElemento.classList.add("resaltado"); // Añade la clase "resaltado"
+            miElemento.classList.remove("activo"); // Elimina la clase "activo"
+            miElemento.classList.toggle("visible"); // Añade "visible" si no está, o la elimina si está
+            if (miElemento.classList.contains("importante")) {
+              console.log("El elemento tiene la clase 'importante'");
+            }
+            </code></pre>
+
+            <li><strong> Eventos y Listeners: </strong>Los eventos son acciones que ocurren en el navegador (por ejemplo, un clic del ratón, una tecla presionada, la carga de una página). Los listeners (o manejadores de eventos) son funciones que se ejecutan en respuesta a estos eventos.</li>
+            <ul>
+                <li><code>element.onclick = function() { ... }</code>: Asigna una función para que se ejecute cuando se hace clic en el elemento. (Forma más antigua y menos flexible para múltiples listeners).</li>
+                <li><code>element.addEventListener(tipoEvento, funcionListener)</code>: Registra una función (funcionListener) para que se ejecute cuando ocurre el tipoEvento especificado en el elemento. Es la forma recomendada, ya que permite añadir múltiples listeners al mismo evento.</li>
+            </ul>
+            <p>Algunos tipos de eventos comunes:</p>
+            <ul>
+                <li><strong>Mouse:</strong> click, mouseover, mouseout, mousedown, mouseup, mousemove</li>
+                <li><strong>Teclado:</strong> keydown, keyup, keypress</li>
+                <li><strong>Formulario:</strong> submit, change, focus, blur</li>
+                <li><strong>Documento/Ventana:</strong> load, DOMContentLoaded, resize, scroll</li>
+            </ul>
+            <pre class="codigo"><code>
+            const botonSaludar = document.querySelector("#saludar-boton");
+            botonSaludar.addEventListener("click", function() {
+              alert("¡Hola!");
+            });
+
+            const miInput = document.querySelector("#mi-input");
+            miInput.addEventListener("keydown", function(evento) {
+              console.log("Tecla presionada:", evento.key);
+            });
+
+            const miDivInteractivo = document.querySelector(".interactivo");
+            miDivInteractivo.addEventListener("mouseover", function() {
+              this.style.backgroundColor = "yellow"; // 'this' se refiere al elemento
+            });
+            miDivInteractivo.addEventListener("mouseout", function() {
+              this.style.backgroundColor = ""; // Volver al color original
+            });
+            </code></pre>
         </ul>
-    </div>
+
+        <p><strong>Manipulación Dinámica del DOM</strong></p>
+        <p>La manipulación dinámica del DOM permite crear, añadir y eliminar elementos de la página web utilizando JavaScript.</p>
+        <li><strong> Creación y Eliminación de Nodos: </strong>El DOM permite crear nuevos nodos (elementos, texto, comentarios) y eliminarlos del documento.</li>
+
+            <p><strong>Creación de Elementos:</strong></p>
+            <ul>
+                <li><code>document.createElement(tagName)</code>: Crea un nuevo elemento HTML con el nombre de etiqueta especificado. El elemento creado no está adjunto al DOM hasta que se añade explícitamente.</li>
+                <li><code>document.createTextNode(text)</code>: Crea un nuevo nodo de texto.</li>
+                <li><code>document.createComment(data)</code>: Crea un nuevo nodo de comentario.</li>
+            </ul>
+            <pre class="codigo"><code>
+// Crear un nuevo elemento &lt;p&gt;
+const nuevoParrafo = document.createElement("p");
+nuevoParrafo.textContent = "Este es un párrafo creado dinámicamente.";
+
+// Crear un nuevo nodo de texto
+const textoAdicional = document.createTextNode(" Texto adicional.");
+
+// Crear un nuevo comentario
+const comentario = document.createComment("Este es un comentario");
+            </code></pre>
+
+            <p><strong>Añadir Nodos al DOM:</strong></p>
+            <ul>
+                <li><code>elementoPadre.appendChild(nuevoNodo)</code>: Añade <code>nuevoNodo</code> al final de la lista de hijos de <code>elementoPadre</code>.</li>
+                <li><code>elementoPadre.insertBefore(nuevoNodo, nodoDeReferencia)</code>: Inserta <code>nuevoNodo</code> antes de <code>nodoDeReferencia</code> dentro de <code>elementoPadre</code>. Si <code>nodoDeReferencia</code> es <code>null</code>, el <code>nuevoNodo</code> se añade al final.</li>
+            </ul>
+            <pre class="codigo"><code>
+            const contenedor = document.querySelector(".contenedor");
+
+            // Añadir el nuevo párrafo al contenedor
+            contenedor.appendChild(nuevoParrafo);
+
+            // Añadir el texto adicional al párrafo
+            nuevoParrafo.appendChild(textoAdicional);
+
+            // Insertar el comentario antes del párrafo
+            contenedor.insertBefore(comentario, nuevoParrafo);
+            </code></pre>
+
+            <p><strong>Eliminar Nodos del DOM:</strong></p>
+            <ul>
+                <li><code>elementoPadre.removeChild(nodoHijo)</code>: Elimina <code>nodoHijo</code> de <code>elementoPadre</code>.</li>
+                <li><code>nodoAEliminar.remove()</code>: Elimina el nodo del DOM por sí mismo. Este método es más moderno y generalmente preferido.</li>
+            </ul>
+            <pre class="codigo"><code>
+            // Eliminar el párrafo usando removeChild
+            // contenedor.removeChild(nuevoParrafo);
+
+            // Eliminar el comentario usando remove()
+            comentario.remove();
+
+            // Eliminar el párrafo usando remove()
+            nuevoParrafo.remove();
+            </code></pre>
+        </ul>
+      </div>
 </div>
 </body>
 </html>

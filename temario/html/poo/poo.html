@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+
+    <header>
+        <h1>Programación Orientada a Objetos en JavaScript</h1>
+    </header>
+
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/temario/html/temario.html">Temario</a>
+        <a href="#">Práctica</a>
+        <a href="/tips/tips.html">Tips</a>
+    </nav>
+<div class="contenedor">
+    <div class="contenido">
+        
+
+        <h2>POO en JavaScript</h2>
+        <p>La Programación Orientada a Objetos es un paradigma fundamental que permite organizar el código de manera más estructurada y modular, facilitando la creación de sistemas complejos y mantenibles. JavaScript, aunque históricamente basado en prototipos, introdujo la sintaxis de <code>class</code> en ECMAScript 2015 (ES6) para facilitar la adopción de este paradigma.</p>
+
+        <h3>Clases y Objetos</h3>
+
+        <p><strong>Clases (<code>class</code>):</strong> Una clase es una plantilla o un plano para crear objetos. Define las propiedades (datos) y los métodos (comportamientos) que tendrán los objetos de esa clase. La sintaxis <code>class</code> en JavaScript proporciona una forma más clara y concisa de definir lo que esencialmente sigue siendo una manipulación de prototipos en segundo plano.</p>
+        <pre class="codigo"><code>
+        class Animal {
+        // Constructor es un método especial para crear e inicializar objetos de la clase
+        constructor(nombre, edad) {
+            this.nombre = nombre;
+            this.edad = edad;
+        }
+
+        // Método de la clase
+        emitirSonido() {
+            console.log("Sonido genérico de animal");
+        }
+
+        // Otro método
+        obtenerInformacion() {
+            return `${this.nombre} tiene ${this.edad} años.`;
+        }
+        }
+        </code></pre>
+
+        <p><strong>Instanciación de Objetos:</strong> La instanciación es el proceso de crear un objeto específico (una instancia) a partir de una clase. Se utiliza la palabra clave <code>new</code> seguida del nombre de la clase y los argumentos para el constructor.</p>
+        <pre class="codigo"><code>
+        const miPerro = new Animal("Buddy", 3);
+        const miGato = new Animal("Whiskers", 5);
+
+        console.log(miPerro); // Output: Animal { nombre: 'Buddy', edad: 3 }
+        console.log(miGato.obtenerInformacion()); // Output: Whiskers tiene 5 años.
+
+        miPerro.emitirSonido(); // Output: Sonido genérico de animal
+        </code></pre>
+
+        <h3>Propiedades y Métodos en Clases</h3>
+        <ul>
+            <li><strong>Propiedades:</strong> Son las variables que almacenan los datos asociados a un objeto. Se definen dentro del constructor utilizando <code>this.nombrePropiedad = valor;</code>.</li>
+            <li><strong>Métodos:</strong> Son las funciones que definen el comportamiento de los objetos de la clase. Se definen dentro del cuerpo de la clase, fuera del constructor. Pueden acceder a las propiedades del objeto utilizando la palabra clave <code>this</code>.</li>
+        </ul>
+        <p>En el ejemplo de la clase <code>Animal</code>, <code>nombre</code> y <code>edad</code> son propiedades, mientras que <code>emitirSonido</code> y <code>obtenerInformacion</code> son métodos.</p>
+
+        <h3>Herencia en Clases</h3>
+        <p>La herencia es un mecanismo que permite a una clase (la clase hija o subclase) heredar propiedades y métodos de otra clase (la clase padre o superclase). Esto fomenta la reutilización de código y la creación de jerarquías de objetos. Se utiliza la palabra clave <code>extends</code> para indicar la clase padre.</p>
+        <pre class="codigo"><code>
+        class Perro extends Animal {
+        constructor(nombre, edad, raza) {
+            // Llama al constructor de la clase padre (Animal) con 'super'
+            super(nombre, edad);
+            this.raza = raza;
+        }
+
+        // Sobreescribe el método emitirSonido de la clase padre
+        emitirSonido() {
+            console.log("¡Guau guau!");
+        }
+
+        ladrar() {
+            console.log("¡Woof!");
+        }
+
+        obtenerInformacion() {
+            return `${super.obtenerInformacion()} Es un ${this.raza}.`;
+        }
+        }
+
+        const miBorderCollie = new Perro("Luna", 2, "Border Collie");
+        console.log(miBorderCollie); // Output: Perro { nombre: 'Luna', edad: 2, raza: 'Border Collie' }
+        miBorderCollie.emitirSonido(); // Output: ¡Guau guau! (método sobrescrito)
+        miBorderCollie.ladrar(); // Output: ¡Woof! (método propio de Perro)
+        console.log(miBorderCollie.obtenerInformacion()); // Output: Luna tiene 2 años. Es un Border Collie.
+        </code></pre>
+        <p>En este ejemplo, la clase <code>Perro</code> hereda las propiedades <code>nombre</code> y <code>edad</code> y el método <code>obtenerInformacion</code> de la clase <code>Animal</code>. También sobrescribe el método <code>emitirSonido</code> para proporcionar un comportamiento específico de los perros y añade un nuevo método <code>ladrar</code>. La palabra clave <code>super</code> se utiliza para llamar al constructor de la clase padre y para acceder a los métodos de la clase padre desde la clase hija.</p>
+
+        <h3>Métodos Estáticos (<code>static</code>)</h3>
+        <p>Los métodos estáticos son métodos que se definen dentro de una clase pero que se llaman directamente en la clase misma, no en una instancia (objeto) de la clase. Son útiles para definir funciones utilitarias que están relacionadas con la clase pero no necesitan acceder a las propiedades específicas de un objeto.</p>
+        <pre class="codigo"><code>
+        class Calculadora {
+        static sumar(a, b) {
+            return a + b;
+        }
+
+        static restar(a, b) {
+            return a - b;
+        }
+        }
+
+        // Se llaman directamente en la clase Calculadora
+        const resultadoSuma = Calculadora.sumar(5, 3);
+        const resultadoResta = Calculadora.restar(10, 4);
+        console.log(resultadoSuma); // Output: 8
+        console.log(resultadoResta); // Output: 6
+
+        // No se pueden llamar en una instancia de la clase
+        // const miCalculadora = new Calculadora();
+        // miCalculadora.sumar(2, 2); // Esto daría un error
+        </code></pre>
+
+        <h3>Encapsulamiento y Abstracción</h3>
+        <p>El <strong>encapsulamiento</strong> es el principio de agrupar los datos (propiedades) y los métodos que operan sobre esos datos dentro de una unidad (la clase), y de restringir el acceso directo a algunos de los componentes del objeto. Esto ayuda a proteger la integridad de los datos y a evitar modificaciones accidentales desde fuera del objeto.</p>
+        <p>La <strong>abstracción</strong> es el principio de mostrar solo la información esencial de un objeto al mundo exterior y ocultar los detalles de implementación complejos. Esto simplifica la forma en que interactuamos con los objetos y nos permite centrarnos en lo que hacen en lugar de cómo lo hacen.</p>
+        <p>JavaScript no tiene modificadores de acceso privados o protegidos nativos como otros lenguajes (aunque existen propuestas para futuras versiones). Sin embargo, se utilizan convenciones (como prefijar nombres de propiedades o métodos con un guion bajo <code>_</code>) para indicar que no deben ser accedidos o modificados directamente desde fuera de la clase.</p>
+        <pre class="codigo"><code>
+        class CuentaBancaria {
+        constructor(saldoInicial) {
+            this._saldo = saldoInicial; // Convención para indicar que '_saldo' es "privado"
+        }
+
+        depositar(cantidad) {
+            if (cantidad > 0) {
+            this._saldo += cantidad;
+            this._mostrarMovimiento(`Depósito de ${cantidad}`);
+            } else {
+            console.log("La cantidad a depositar debe ser mayor que cero.");
+            }
+        }
+
+        retirar(cantidad) {
+            if (cantidad > 0 && cantidad &lt= this._saldo) {
+            this._saldo -= cantidad;
+            this._mostrarMovimiento(`Retiro de ${cantidad}`);
+            } else {
+            console.log("Saldo insuficiente o cantidad inválida.");
+            }
+        }
+
+        consultarSaldo() {
+            return this._saldo;
+        }
+
+        // Método "privado" (por convención)
+        _mostrarMovimiento(movimiento) {
+            console.log(`Movimiento: ${movimiento}. Saldo actual: ${this._saldo}`);
+        }
+        }
+
+        const miCuenta = new CuentaBancaria(1000);
+        miCuenta.depositar(500); // Output: Movimiento: Depósito de 500. Saldo actual: 1500
+        miCuenta.retirar(200);  // Output: Movimiento: Retiro de 200. Saldo actual: 1300
+        console.log("Saldo actual:", miCuenta.consultarSaldo()); // Output: Saldo actual: 1300
+
+        // Aunque se puede acceder a la propiedad "_saldo", la convención indica que no se debe hacer directamente
+        // console.log(miCuenta._saldo); // Esto funcionaría, pero se considera una mala práctica
+        </code></pre>
+
+        <h3>Getters y Setters</h3>
+        <p>Los <strong>getters</strong> y <strong>setters</strong> son métodos especiales dentro de una clase que permiten controlar el acceso y la modificación de las propiedades de un objeto. Proporcionan una forma de encapsular la lógica detrás de la obtención y el establecimiento de los valores de las propiedades.</p>
+        <ul>
+            <li><strong>Getter:</strong> Un método getter se utiliza para obtener el valor de una propiedad. Se define utilizando la palabra clave <code>get</code> seguida del nombre de la propiedad (sin paréntesis).</li>
+            <li><strong>Setter:</strong> Un método setter se utiliza para establecer el valor de una propiedad. Se define utilizando la palabra clave <code>set</code> seguida del nombre de la propiedad (sin paréntesis) y recibe un parámetro que representa el nuevo valor.</li>
+        </ul>
+        <pre class="codigo"><code>
+        class Persona {
+        constructor(nombre) {
+            this._nombre = nombre;
+        }
+
+        get nombre() {
+            console.log("Se está obteniendo el nombre.");
+            return this._nombre.toUpperCase(); // Podemos realizar alguna lógica al obtener
+        }
+
+        set nombre(nuevoNombre) {
+            console.log("Se está modificando el nombre.");
+            if (typeof nuevoNombre === 'string' && nuevoNombre.length > 0) {
+            this._nombre = nuevoNombre;
+            } else {
+            console.error("El nombre debe ser una cadena no vacía.");
+            }
+        }
+        }
+
+        const miPersona = new Persona("Juan");
+        console.log(miPersona.nombre); // Output: Se está obteniendo el nombre.
+                                    //         JUAN (se llama al getter)
+
+        miPersona.nombre = "María"; // Output: Se está modificando el nombre.
+        console.log(miPersona.nombre); // Output: Se está obteniendo el nombre.
+                                    //         MARÍA
+
+        miPersona.nombre = ""; // Output: Se está modificando el nombre.
+                            //         El nombre debe ser una cadena no vacía.
+        console.log(miPersona.nombre); // Output: Se está obteniendo el nombre.
+                             //         MARÍA (el valor no se modificó)
+        </code></pre>
+        <p>Los getters y setters permiten tener un control más fino sobre cómo se accede y se modifica el estado interno de un objeto, lo que contribuye a un mejor encapsulamiento y a la posibilidad de añadir lógica de validación o transformación.</p>
+
+        <p>La Programación Orientada a Objetos en JavaScript, con la introducción de la sintaxis de clases, se ha vuelto más accesible y potente, permitiendo construir aplicaciones complejas de manera organizada y reutilizable. ¡Sigue explorando y practicando con estos conceptos para fortalecer tus habilidades de programación! Si tienes más preguntas, no dudes en consultarme.</p>
+    </div>
+</div>
+</body>
+</html>

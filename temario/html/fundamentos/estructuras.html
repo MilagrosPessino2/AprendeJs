@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de control</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+    <header>
+    <h1>Estructuras de control</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+
+  <div class="contenedor">
+    <div class="contenido">
+    <!-- CONDICIONALES -->
+        <h2>Condicionales</h2>
+        <p>Las estructuras condicionales te permiten ejecutar diferentes bloques
+             de código basados en si una condición es verdadera o falsa.</p>
+
+        <ul>
+        <li><strong>IF</strong>:La instrucción if ejecuta un bloque de código si una condición especificada
+             es verdadera.</li>
+            
+             <h5>Ejemplo If:</h5>
+            <pre class="codigo"><code>
+            let edad = 18;
+            if (edad >= 18) {
+            console.log("Eres mayor de edad.");
+            }
+            </code></pre>
+
+        <li><strong>ELSE</strong>: La instrucción else se ejecuta si la condición de la instrucción if es falsa.</li>
+            
+            <h5>Ejemplo else:</h5>
+            <pre class="codigo"><code>
+            let temperatura = 15;
+                if (temperatura > 20) {
+                console.log("Hace calor.");
+                } else {
+                console.log("Hace frío.");
+                }
+            </code></pre>
+
+
+        <li><strong>ELSE IF</strong>: Se utiliza para verificar múltiples condiciones en secuencia. 
+            Si la condición del if es falsa, se evalúa la condición del primer else if. 
+            Si es verdadera, se ejecuta su bloque de código. Puedes tener múltiples else if.</li>
+
+            <h5>Ejemplo else if:</h5>
+            <pre class="codigo"><code>
+            let nota = 75;
+            if (nota >= 90) {
+            console.log("Sobresaliente");
+            } else if (nota >= 70) {
+            console.log("Notable");
+            } else if (nota >= 60) {
+            console.log("Aprobado");
+            } else {
+            console.log("Reprobado");
+            }
+            </code></pre>
+
+            <li><strong>SWITCH</strong>: La instrucción switch evalúa una expresión, comparando el valor del resultado con los valores de diferentes casos (case). Si hay una coincidencia,
+                 se ejecutan las instrucciones asociadas a ese case. 
+                 La instrucción break se utiliza para salir del switch después de que se encuentra una coincidencia y se ejecuta el código correspondiente. Si no se encuentra ninguna coincidencia,
+                  se puede ejecutar un bloque de código default (opcional).</li>
+
+            <h5>Ejemplo switch:</h5>
+            <pre class="codigo"><code>
+            let dia = "lunes";
+            switch (dia) {
+            case "lunes":
+                console.log("Es el inicio de la semana.");
+                break;
+            case "viernes":
+                console.log("¡Ya casi es fin de semana!");
+                break;
+            case "sabado":
+            case "domingo":
+                console.log("Es fin de semana.");
+                break;
+            default:
+                console.log("Es un día entre semana.");
+            }
+            </code></pre>
+        </ul>
+
+        
+
+
+    </div>
+        </div>

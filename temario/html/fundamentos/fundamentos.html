@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos de JavaScript</title>
+  <link rel="stylesheet" href="../css/temario.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>Fundamentos de JavaScript</h1>
+  </header>
+
+  <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="../html/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+
+  <section class="intro">
+    <p>En esta sección aprenderás los conceptos básicos de JavaScript.</p>
+  </section>
+
+  <section class="contenido">
+    <h3>Sintaxis básica</h3>
+    <ul>
+      <li>Variables (let, const, var)</li>
+      <li>Tipos de datos primitivos (String, Number, Boolean, Null, Undefined, Symbol)</li>
+      <li>Operadores aritméticos, lógicos y de comparación</li>
+    </ul>
+
+    <h4>📌 Variables en JavaScript</h4>
+    <p>Una variable es un espacio en memoria que se utiliza para almacenar datos. JavaScript permite declararlas usando <code>var</code>, <code>let</code> y <code>const</code>.</p>
+    <ul>
+      <li><strong>var:</strong> Declaración clásica. Tiene alcance de función.</li>
+      <li><strong>let:</strong> Se recomienda actualmente. Tiene alcance de bloque.</li>
+      <li><strong>const:</strong> Para valores que no cambian. Tiene alcance de bloque.</li>
+    </ul>
+    <pre><code>// Ejemplo con let
+let nombre = "Ana";
+nombre = "Luis";
+
+// Ejemplo con const
+const PI = 3.1416;
+// PI = 3.14; ❌ Error, no se puede reasignar
+</code></pre>
+
+    <h4>📌 Tipos de datos primitivos</h4>
+    <ul>
+      <li><strong>String:</strong> Cadenas de texto. Ej: <code>"Hola"</code></li>
+      <li><strong>Number:</strong> Números. Ej: <code>5</code>, <code>3.14</code></li>
+      <li><strong>Boolean:</strong> <code>true</code> o <code>false</code></li>
+      <li><strong>Null:</strong> Valor intencionadamente nulo</li>
+      <li><strong>Undefined:</strong> Variable declarada sin valor</li>
+      <li><strong>Symbol:</strong> Valores únicos y no modificables</li>
+    </ul>
+
+    <h4>📌 Operadores</h4>
+    <ul>
+      <li><strong>Aritméticos:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+      <li><strong>Lógicos:</strong> <code>&&</code>, <code>||</code>, <code>!</code></li>
+      <li><strong>Comparación:</strong> <code>==</code>, <code>===</code>, <code>!=</code>, <code>!==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+    </ul>
+
+    <h3>Estructuras de control</h3>
+    <ul>
+      <li>Condicionales (if, else, switch)</li>
+      <li>Bucles (for, while, do-while, forEach)</li>
+    </ul>
+
+    <h4>📌 Condicionales</h4>
+    <pre><code>let edad = 18;
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}
+
+// switch
+let dia = "lunes";
+switch (dia) {
+  case "lunes":
+    console.log("Comienza la semana");
+    break;
+  case "viernes":
+    console.log("Fin de semana cercano");
+    break;
+  default:
+    console.log("Otro día");
+}
+</code></pre>
+
+    <h4>📌 Bucles</h4>
+    <pre><code>// for
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// while
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+
+// forEach
+[1, 2, 3].forEach(function(n) {
+  console.log(n);
+});
+</code></pre>
+
+    <h3>Funciones</h3>
+    <ul>
+      <li>Funciones tradicionales y anónimas</li>
+      <li>Arrow functions (=>)</li>
+      <li>Funciones callback y recursivas</li>
+      <li>Funciones autoejecutables</li>
+    </ul>
+
+    <h4>📌 Funciones tradicionales</h4>
+    <pre><code>function saludar(nombre) {
+  return "Hola " + nombre;
+}
+</code></pre>
+
+    <h4>📌 Funciones anónimas</h4>
+    <pre><code>const sumar = function(a, b) {
+  return a + b;
+};
+</code></pre>
+
+    <h4>📌 Arrow functions</h4>
+    <pre><code>const restar = (a, b) => a - b;
+</code></pre>
+
+    <h4>📌 Callback</h4>
+    <pre><code>function procesar(valor, callback) {
+  return callback(valor);
+}
+
+procesar(5, function(x) {
+  return x * 2;
+});
+</code></pre>
+
+    <h4>📌 Recursiva</h4>
+    <pre><code>function factorial(n) {
+  if (n === 0) return 1;
+  return n * factorial(n - 1);
+}
+</code></pre>
+
+    <h4>📌 Función autoejecutable</h4>
+    <pre><code>(function() {
+  console.log("Se ejecuta automáticamente");
+})();
+</code></pre>
+
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintaxis basica</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
+</head>
+<body>
+    <header>
+    <h1>Sintaxis basica</h1>
+  </header>
+
+    <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/temario/temario.html">Temario</a>
+    <a href="#">Práctica</a>
+    <a href="/tips/tips.html">Tips</a>
+  </nav>
+
+    <div class="contenedor">
+  <div class="contenido">
+
+    <!-- DECLARACIONES -->
+    <h2>Declaraciones</h2>
+    <p>En JavaScript, se utilizan palabras clave para declarar variables,
+    lo que esencialmente reserva un espacio con un nombre en la memoria para almacenar datos.</p>
+
+    <ul>
+      <li><strong>var</strong>:Es la forma más antigua de declarar variables en JavaScript.
+         Aunque todavía funciona, se recomienda usar let o const en el código moderno debido a su 
+         comportamiento más predecible en cuanto al alcance (scope) de las variables.</li>
+
+      <li><strong>let</strong>: Se utiliza para declarar variables que pueden ser reasignadas con un nuevo valor.
+         Es la forma preferida para la mayoría de las variables.</li>
+
+      <li><strong>const</strong>: Se utiliza para declarar variables cuyo valor no debe ser reasignado después de la inicialización.
+         Si intentas reasignar una variable const, obtendrás un error.
+        No se puede declarar una constante con el mismo nombre que una función o variable en el mismo ámbito</li>
+    </ul>
+
+    <h5>Ejemplo de declaración de variables:</h5>
+        <pre class="codigo"><code>
+        // Declaración con var
+        var nombre = "Carlos";
+
+        // Declaración con let
+        let edad = 30;
+
+        // Declaración con const
+        const PI = 3.1416;
+        </code></pre>
+
+    <h2>Variables</h2>
+    <p>Se utilizan como nombres simbólicos para valores en tu aplicación. Los identificadores deben comenzar con una letra, guión bajo (<code>_</code>) o signo de dólar (<code>$</code>). Luego pueden incluir dígitos.</p>
+    <p>Ejemplos válidos: <code>Number_hits</code>, <code>temp99</code>, <code>$credit</code>, <code>_name</code>.</p>
+
+
+    <h4>Evaluar variables</h4>
+    <p>Si se declara una variable con <code>var</code> o <code>let</code> sin asignar valor, su valor es <code>undefined</code>.</p>
+    <p>Acceder a una variable no declarada lanza una excepción <code>ReferenceError</code>.</p>
+
+    <h4>Ámbito de variables</h4>
+    <p>Las variables declaradas fuera de funciones son <strong>globales</strong>. Dentro de funciones son <strong>locales</strong>.</p>
+    <p>En páginas web, las variables globales son propiedades del objeto <code>window</code>. Por ejemplo, puedes acceder a <code>window.phoneNumber</code> desde un iframe con <code>parent.phoneNumber</code>.</p>
+
+
+     <!--TIPOS DE DATOS-->
+    <h2>Tipos de datos primitivos</h2>
+    <p>ECMAScript define ocho tipos de datos:</p>
+    <ul>
+        <li><strong>String</strong>: Representa una secuencia de caracteres de texto. Se delimitan con comillas simples (') o dobles (").</li>
+        <li><strong>Number</strong>: Representa valores numéricos, incluyendo enteros y números de punto flotante. JavaScript no tiene tipos separados para enteros y decimales.</li>
+        <li><strong>BigInt</strong>: Enteros grandes (<code>9007199254740992n</code>)</li>
+        <li><strong>Boolean</strong>:Representa un valor de verdad, que puede ser true (verdadero) o false (falso).</li>
+        <li><strong>undefined</strong>:Representa un valor que no ha sido asignado. Una variable declarada sin una asignación inicial tiene el valor undefined. También es el valor que se devuelve cuando se intenta acceder a una propiedad inexistente de un objeto.</li>
+        <li><strong>null</strong>:Representa la ausencia intencional de un valor. Es un valor literal que representa una referencia nula o "sin valor".</li>
+        <li><strong>Symbol</strong>:Representa un valor único e inmutable. Se utiliza principalmente para crear propiedades de objeto privadas o para evitar colisiones de nombres de propiedades</li>
+        <li><strong>Object</strong>: Colección de propiedades y funciones</li>
+    </ul>
+
+    <h5>Ejemplo de tipos primitivos:</h5>
+    <pre class="codigo"><code>
+    let nombre = "Ana";           // String
+    let edad = 25;                // Number
+    let esEstudiante = true;      // Boolean
+    let identificador = Symbol(); // Symbol
+    let datoIndefinido;           // undefined
+    let valorNulo = null;         // null
+    let numeroGrande = 9007199254740992n; // BigInt
+    </code></pre>
+
+
+    <!-- OPERADORES -->
+
+    <h2>Operadores</h2>
+    <p>Los operadores son símbolos especiales que realizan operaciones en uno o más operandos (valores).</p>
+
+    <h4>Operadores Aritméticos</h4>
+    <p>Realizan operaciones matemáticas básicas.</p>
+
+    <ul>
+      <li><strong>+</strong>:Suma</li>
+      <li><strong>-</strong>:Resta</li>
+      <li><strong>*</strong>:Multiplicacion</li>
+      <li><strong>/</strong>:Division</li>
+      <li><strong>%</strong>:Módulo (resto de la división)</li>
+      <li><strong>**</strong>:Exponenciación (ES2016)</li>
+      <li><strong>++</strong>:Incremento (prefijo o sufijo)</li>
+      <li><strong>--</strong>:Decremento (prefijo o sufijo)</li> 
+    </ul>
+
+    <h5>Ejemplo de operadores aritméticos:</h5>
+    <pre class="codigo"><code>
+    let a = 4, b = 2;
+    console.log(a + b); // 6
+    console.log(a - b); // 2
+    console.log(a * b); // 8
+    console.log(a / b); // 2
+    console.log(a % b); // 0
+    console.log(a ** 2); // 16
+    a++;
+    b--;
+    console.log(a, b); // 5, 1
+    </code></pre>
+
+     <h4>Operadores Logicos</h4>
+    <p>Se utilizan para combinar o modificar expresiones booleanas.</p>
+
+    <ul>
+      <li><strong>&&</strong>:AND lógico (devuelve true si ambos operandos son true)</li>
+      <li><strong>||</strong>:OR lógico (devuelve true si al menos uno de los operandos es true)</li>
+      <li><strong>!</strong>:NOT lógico (devuelve el valor booleano contrario del operando)</li>
+    </ul>
+
+    <h5>Ejemplo de operadores lógicos:</h5>
+    <pre class="codigo"><code>let esMayor = true;
+    let esAlumno = false;
+
+    console.log(esMayor && esAlumno); // false
+    console.log(esMayor || esAlumno); // true
+    console.log(!esAlumno);           // true
+    </code></pre>
+
+     <h4>Operadores de comparación</h4>
+    <p>Se utilizan para comparar dos operandos y devuelven un valor booleano (true o false).</p>
+
+    <ul>
+      <li><strong>==</strong>: Igualdad (compara solo el valor, puede haber conversión de tipo)</li>
+      <li><strong>===</strong>:Igualdad estricta (compara tanto el valor como el tipo)</li>
+      <li><strong>!=</strong>:Desigualdad (compara solo el valor)</li>
+      <li><strong>!==</strong>:Desigualdad estricta (compara tanto el valor como el tipo)</li>
+      <li><strong>></strong>:Mayor que</li>
+      <li><strong>&lt;</strong>:Menor que</li>
+      <li><strong>>=</strong>:Mayor o igual que</li>
+      <li><strong>&lt;=</strong>:Menor o igual que</li> 
+    </ul>
+
+    <h5>Ejemplo de operadores de comparación:</h5>
+    <pre class="codigo"><code>let x = 5;
+    let y = "5";
+    console.log(x == y);  // true
+    console.log(x === y); // false
+    console.log(x != y);  // false
+    console.log(x !== y); // true
+    console.log(x > 3);   // true
+    console.log(x &lt;= 5);  // true
+    </code></pre>
+  </div>
+</div>
+</body>
+<script src="/temario/js/sintaxis.js"></script>
+</html>

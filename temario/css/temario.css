@@ -63,6 +63,14 @@ nav {
   padding: 0;
 }
 
+.menu-lateral li {
+  position: relative;
+}
+
+.menu-lateral > ul > li {
+  margin-bottom: 10px;
+}
+
 .menu-lateral a {
   display: block;
   color: #333;
@@ -76,6 +84,15 @@ nav {
   background-color: #d0d8e0;
 }
 
+.submenu {
+  display: none;
+  margin-left: 15px;
+  
+}
+
+.menu-lateral li:hover > .submenu {
+  display: block;
+}
 .contenido {
   flex: 1;
   padding: 2rem;
@@ -91,3 +108,14 @@ section h2 {
 ul li {
   margin-bottom: 0.5rem;
 }
+
+.codigo {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  border-left: 4px solid #4a90e2;
+  font-family: Consolas, monospace;
+  overflow-x: auto;
+  margin: 1rem 0;
+  white-space: pre-wrap;
+}
+

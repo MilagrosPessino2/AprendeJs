@@ -35,6 +35,12 @@
             console.log(nuevaLongitud); // Output: 3
             </code></pre>
 
+              <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosPush" class="contenedor-resultados">
+                </div>
+            </section>
+
             <p><strong>pop: </strong>Elimina el último elemento del array y devuelve ese elemento eliminado. Si el array está vacío, devuelve undefined.</p>
             <pre class="codigo"><code>
             let frutas = ["manzana", "banana", "naranja"];
@@ -42,6 +48,12 @@
             console.log(frutas); // Output: ["manzana", "banana"]
             console.log(ultimoElemento); // Output: "naranja"
             </code></pre>
+
+               <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn2" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosPop" class="contenedor-resultados">
+                </div>
+            </section>
 
             <p><strong>shift: </strong>Elimina el primer elemento del array y devuelve ese elemento eliminado. Si el array está vacío, devuelve undefined. Reindexa los elementos restantes.</p>
             <pre class="codigo"><code>
@@ -51,6 +63,12 @@
             console.log(primerElemento); // Output: "manzana"
             </code></pre>
 
+              <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn3" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosShift" class="contenedor-resultados">
+                </div>
+            </section>
+
             <p><strong>unshift(elemento1, elemento2, ...): </strong> Agrega uno o más elementos al principio del array y devuelve la nueva longitud del array. Reindexa los elementos existentes.</p>
             <pre class="codigo"><code>
             let frutas = ["banana", "naranja"];
@@ -58,6 +76,12 @@
             console.log(frutas); // Output: ["manzana", "kiwi", "banana", "naranja"]
             console.log(nuevaLongitud); // Output: 4
             </code></pre>
+
+              <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn4" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosUnshift" class="contenedor-resultados">
+                </div>
+            </section>
 
              <p><strong>map(callback(elemento, indice, array)): </strong> Crea un nuevo array con los resultados de llamar a una función proporcionada (callback) en cada elemento del array original. La función callback recibe tres argumentos: el elemento actual, su índice y el array original.</p>
             <pre class="codigo"><code>
@@ -120,6 +144,12 @@
             }
             </code></pre>
 
+             <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosCreacion" class="contenedor-resultados">
+                </div>
+            </section>
+
             <!--map-->
             <p><strong>Map: </strong>También se utiliza para iterar sobre cada elemento y realizar una acción (aunque su principal propósito es crear un nuevo array).</p>
               <pre class="codigo"><code>
@@ -128,6 +158,12 @@
             console.log(`Hola, ${nombre}!`);
             });
             </code></pre>
+            
+             <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosCreacion" class="contenedor-resultados">
+                </div>
+            </section>
 
             <!--for each-->
             <p><strong>ForEach: </strong>Ejecuta una función proporcionada (callback) una vez por cada elemento del array. Es similar a map en su forma de iterar, pero no crea un nuevo array; se utiliza principalmente para realizar efectos secundarios (como imprimir en la consola, modificar variables externas, etc.).</p>
@@ -138,6 +174,12 @@
             });
             </code></pre>
 
+             <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosCreacion" class="contenedor-resultados">
+                </div>
+            </section>
+
             <!--filter-->
             <p><strong>Filter: </strong>Aunque su propósito principal es filtrar elementos, también itera sobre cada elemento del array para aplicar la condición de filtrado.</p>
               <pre class="codigo"><code>
@@ -147,10 +189,76 @@
             });
             console.log(mayoresDeEdad); // Output: [22, 18, 30]
             </code></pre>
+            
+             <h2>Resultados:</h2>
+            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
+            <div id="resultadosCreacion" class="contenedor-resultados">
+                </div>
+            </section>
         </ul>
     </div>
 </div>
 
 </body>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+        const mostrarResultadoBtn = document.getElementById('mostrarResultadoBtn');
+        const resultadosDiv1 = document.getElementById('resultadosPush');
+
+        const mostrarResultadoBtn2 = document.getElementById('mostrarResultadoBtn2');
+        const resultadosDiv2 = document.getElementById('resultadosPop');
+        
+        const mostrarResultadoBtn3 = document.getElementById('mostrarResultadoBtn3');
+        const resultadosDiv3 = document.getElementById('resultadosShift');
+
+        const mostrarResultadoBtn4 = document.getElementById('mostrarResultadoBtn4');
+        const resultadosDiv4 = document.getElementById('resultadosUnshift');
+
+        mostrarResultadoBtn.addEventListener('click', function() {
+            resultadosDiv1.innerHTML = '';
+            const detalles = resultadoPush();
+            const obtenerFrutas = obtenerArrayFrutas();
+            const obtenerArray = mostrarArray(obtenerFrutas);
+            mostrarResultadoEnDiv("Longitud del array: " +detalles, resultadosDiv1);
+            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv1); 
+        });
+
+          mostrarResultadoBtn2.addEventListener('click', function() {
+            resultadosDiv2.innerHTML = '';
+            const detalles = devolverUltimoElemento();
+            const obtenerFrutas2 = obtenerArrayFrutas2();
+            const obtenerArray = mostrarArray(obtenerFrutas2);
+            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv2); 
+            mostrarResultadoEnDiv("elemento eliminado del array: " +detalles, resultadosDiv2);
+        });
+
+        mostrarResultadoBtn3.addEventListener('click', function() {
+            resultadosDiv3.innerHTML = '';
+            const detalles = devolverPrimerElemento();
+            const obtenerFrutas3 = obtenerArrayFrutas3();
+            const obtenerArray = mostrarArray(obtenerFrutas3);
+            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv3); 
+            mostrarResultadoEnDiv("elemento eliminado del array: " +detalles, resultadosDiv3);
+        });
+
+          mostrarResultadoBtn4.addEventListener('click', function() {
+            resultadosDiv4.innerHTML = '';
+            const obtenerFrutas4 = obtenerArrayFrutas4();
+            const obtenerArray = mostrarArray(obtenerFrutas4);
+            const detalles = longitudFrutas4();
+            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv4); 
+            mostrarResultadoEnDiv("Longitud array: " +detalles, resultadosDiv4);
+        });
+
+       
+        function mostrarResultadoEnDiv(mensaje, elementoDestino) {
+            const nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = mensaje;
+            elementoDestino.appendChild(nuevoParrafo);
+        }
+
+
+    });
+</script>
 <script src="/temario/js/objetos/arrays.js"></script>
 </html>

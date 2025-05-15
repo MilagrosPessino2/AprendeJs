@@ -13,6 +13,17 @@ let frutas = ["manzana", "banana"];
             console.log(frutas); // Output: ["manzana", "banana", "naranja"]
             console.log(nuevaLongitud); // Output: 3
 
+function resultadoPush(){
+    return frutas.length;
+}
+
+function obtenerArrayFrutas(){
+    return frutas;
+}
+
+function mostrarArray(Array) {
+   return Array.join(", ");
+}
 
 //pop
 console.log("pop");
@@ -21,6 +32,12 @@ let frutas2 = ["manzana", "banana", "naranja"];
             console.log(frutas2); // Output: ["manzana", "banana"]
             console.log(ultimoElemento); // Output: "naranja"
 
+function obtenerArrayFrutas2(){
+    return frutas2;
+}
+function devolverUltimoElemento(){
+    return ultimoElemento;
+}
 //shift
 console.log("shift");
 let frutas3 = ["manzana", "banana", "naranja"];
@@ -28,12 +45,26 @@ let frutas3 = ["manzana", "banana", "naranja"];
             console.log(frutas3); // Output: ["banana", "naranja"]
             console.log(primerElemento); // Output: "manzana"
 
+function obtenerArrayFrutas3(){
+    return frutas3;
+}
+function devolverPrimerElemento(){
+    return primerElemento;
+}
 //unshift
 console.log("unshift");
 let frutas4 = ["banana", "naranja"];
             let nuevaLongitud2 = frutas4.unshift("manzana", "kiwi");
             console.log(frutas4); 
             console.log(nuevaLongitud2);
+
+function obtenerArrayFrutas4(){
+    return frutas4;
+}
+
+function longitudFrutas4(){
+    return frutas4.length;
+}
 
 //map
 console.log("map");

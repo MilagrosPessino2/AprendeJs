@@ -40,6 +40,12 @@
             miObjeto.mostrarDetalles();
         </code></pre>
 
+         <h2>Resultados:</h2>
+        <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
+        <div id="resultadosCreacion" class="contenedor-resultados">
+            </div>
+        </section>
+
         <!--Acceso a propiedades-->
         <li><strong> Acceso a propiedades (notación de punto y corchetes): </strong> Hay dos formas principales de acceder a las propiedades de un objeto:</li>
         <p><strong>Notación de punto (.):</strong>Se utiliza cuando conoces el nombre de la propiedad y este es un identificador válido (sin espacios ni caracteres especiales al inicio).</p>
@@ -47,6 +53,13 @@
          console.log(miObjeto.nombre); // Salida: Producto A
          console.log(miObjeto.precio); // Salida: 25.99
         </code></pre>
+        <section>
+
+         <h2>Resultados:</h2>
+        <button id="mostrarResultadoBtn2" class="boton-resultado">Mostrar Resultado</button>
+        <div id="resultadosNotacionP" class="contenedor-resultados">
+            </div>
+        </section> 
 
         <p><strong>Notación de corchetes ([]):</strong>Es más flexible. Se utiliza cuando el nombre de la propiedad está almacenado en una variable o contiene espacios o caracteres especiales. También puedes usarla con cadenas dinámicas.</p>
         <pre class="codigo"><code>
@@ -54,6 +67,12 @@
         const propiedad = "precio";
         console.log(miObjeto[propiedad]); // Salida: 25.99
         </code></pre>
+
+        <h2>Resultados:</h2>
+        <button id="mostrarResultadoBtn3" class="boton-resultado">Mostrar Resultado</button>
+        <div id="resultadosNotacionC" class="contenedor-resultados">
+            </div>
+        </section>
 
          <!--this dentro de objetos-->
         <li><strong> this dentro de objetos </strong> La palabra clave this dentro de un método de un objeto se refiere al propio objeto que llamó al método.
@@ -68,10 +87,68 @@
                     };
         console.log(otroObjeto.descripcion()); // Salida: Este es un Samsung Galaxy S21.
         </code></pre>
+
+     
+        <h2>Resultados:</h2>
+        <button id="mostrarResultadoBtn4" class="boton-resultado">Mostrar Resultado</button>
+        <div id="resultadosThis" class="contenedor-resultados">
+        </div>
     
-    </ul>
+   
     </div>
 </div>
 </body>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+        const mostrarResultadoBtn = document.getElementById('mostrarResultadoBtn');
+        const resultadosDiv1 = document.getElementById('resultadosCreacion');
+
+        const mostrarResultadoBtn2 = document.getElementById('mostrarResultadoBtn2');
+        const resultadosDiv2 = document.getElementById('resultadosNotacionP');
+
+        const mostrarResultadoBtn3 = document.getElementById('mostrarResultadoBtn3');
+        const resultadosDiv3 = document.getElementById('resultadosNotacionC');
+
+        const mostrarResultadoBtn4 = document.getElementById('mostrarResultadoBtn4');
+        const resultadosDiv4 = document.getElementById('resultadosThis');
+        
+
+        mostrarResultadoBtn.addEventListener('click', function() {
+            resultadosDiv1.innerHTML = '';
+            const detalles = obtenerDetalles();
+            mostrarPropiedadesObjeto(detalles, resultadosDiv1); 
+        });
+
+        mostrarResultadoBtn2.addEventListener('click', function() {
+            resultadosDiv2.innerHTML = '';
+            const nombre = obtenerNombre();
+            const precio = obtenerPrecio();
+            mostrarResultadoEnDiv(nombre, resultadosDiv2);
+            mostrarResultadoEnDiv(precio, resultadosDiv2); 
+        });
+
+        mostrarResultadoBtn3.addEventListener('click', function() {
+            resultadosDiv3.innerHTML = '';
+            const disponibilidad = ObtenerDisponibilidad();
+            const precio = obtenerPrecio2();
+            mostrarResultadoEnDiv(disponibilidad, resultadosDiv3);
+            mostrarResultadoEnDiv(precio, resultadosDiv3); 
+        });
+
+        mostrarResultadoBtn4.addEventListener('click', function() {
+            resultadosDiv4.innerHTML = '';
+            const resultadoDescripcion  = mostrarObjeto();
+            mostrarResultadoEnDiv(resultadoDescripcion, resultadosDiv4); 
+        });
+
+        function mostrarResultadoEnDiv(mensaje, elementoDestino) {
+            const nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = mensaje;
+            elementoDestino.appendChild(nuevoParrafo);
+        }
+
+
+    });
+</script>
 <script src="/temario/js/objetos/objetos.js"></script>
 </html>

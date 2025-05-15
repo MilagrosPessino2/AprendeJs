@@ -119,3 +119,54 @@ ul li {
   white-space: pre-wrap;
 }
 
+/* Estilos para la sección de Resultados */
+.resultados-seccion {
+    background-color: #ffffff; /* Fondo blanco para destacar */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.resultados-seccion h2 {
+    color: #4a90e2; /* Color primario para el título */
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4a90e2; /* Línea debajo del título */
+    padding-bottom: 8px;
+}
+
+.boton-resultado {
+    background-color: #4a90e2; /* Botón con el color primario */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.boton-resultado:hover {
+    background-color: #357ab7; /* Oscurecer al pasar el ratón */
+}
+
+.contenedor-resultados {
+    padding: 15px;
+    border: 1px solid #d0d8e0; /* Borde sutil alrededor de los resultados */
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Un fondo ligeramente grisáceo */
+}
+
+.contenedor-resultados p {
+    color: #333; /* Color de texto estándar */
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.contenedor-resultados p:last-child {
+    margin-bottom: 0; /* Eliminar el margen inferior del último párrafo */
+}
+

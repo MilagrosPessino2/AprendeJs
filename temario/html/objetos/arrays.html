@@ -1,199 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARRAYS</title>
-  <link rel="stylesheet" href="/temario/css/temario.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAYS</title>
+    <link rel="stylesheet" href="/temario/css/temario.css">
 </head>
 <body>
 
-  <header>
-    <h1>ARRAYS</h1>
-  </header>
+    <header>
+        <h1>ARRAYS</h1>
+    </header>
 
     <nav>
-    <a href="/index.html">Inicio</a>
-    <a href="/temario/html/temario.html">Temario</a>
-    <a href="#">Práctica</a>
-    <a href="/tips/tips.html">Tips</a>
-  </nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/temario/html/temario.html">Temario</a>
+        <a href="#">Práctica</a>
+        <a href="/tips/tips.html">Tips</a>
+    </nav>
 <div class="contenedor">
     <div class="contenido">
-        <!-- ARRAYS -->
         <h2>ARRAYS</h2>
         <p>Un array (también conocido como arreglo o vector en algunos contextos) es una estructura de datos que permite almacenar una colección ordenada de elementos, los cuales pueden ser de cualquier tipo (números, strings, booleanos, otros arrays, objetos, etc.). Cada elemento en un array tiene una posición numérica llamada índice, que comienza desde 0 para el primer elemento.</p>
         <ul>
-            <!--Metodos-->
             <li><strong> Metodos de arrays: </strong> Los lenguajes de programación modernos ofrecen una variedad de métodos integrados para manipular arrays de manera eficiente. Estos son los más comunes:</li>
 
-            <p><strong>push: </strong>Agrega uno o más elementos al final del array y devuelve la nueva longitud del array.</p>
-            <pre class="codigo"><code>
-            let frutas = ["manzana", "banana"];
-            let nuevaLongitud = frutas.push("naranja");
-            console.log(frutas); // Output: ["manzana", "banana", "naranja"]
-            console.log(nuevaLongitud); // Output: 3
-            </code></pre>
-
-              <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosPush" class="contenedor-resultados">
-                </div>
+            <section>
+                <p><strong>push: </strong>Agrega uno o más elementos al final del array y devuelve la nueva longitud del array.</p>
+                <pre class="codigo"><code>
+                let frutas = ["manzana", "banana"];
+                let nuevaLongitud = frutas.push("naranja");
+                console.log(frutas); // Output: ["manzana", "banana", "naranja"]
+                console.log(nuevaLongitud); // Output: 3
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="push">Mostrar Resultado</button>
+                <div id="resultados-push" class="contenedor-resultados"></div>
             </section>
 
-            <p><strong>pop: </strong>Elimina el último elemento del array y devuelve ese elemento eliminado. Si el array está vacío, devuelve undefined.</p>
-            <pre class="codigo"><code>
-            let frutas = ["manzana", "banana", "naranja"];
-            let ultimoElemento = frutas.pop();
-            console.log(frutas); // Output: ["manzana", "banana"]
-            console.log(ultimoElemento); // Output: "naranja"
-            </code></pre>
-
-               <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn2" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosPop" class="contenedor-resultados">
-                </div>
+            <section>
+                <p><strong>pop: </strong>Elimina el último elemento del array y devuelve ese elemento eliminado. Si el array está vacío, devuelve undefined.</p>
+                <pre class="codigo"><code>
+                let frutas = ["manzana", "banana", "naranja"];
+                let ultimoElemento = frutas.pop();
+                console.log(frutas); // Output: ["manzana", "banana"]
+                console.log(ultimoElemento); // Output: "naranja"
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
             </section>
 
-            <p><strong>shift: </strong>Elimina el primer elemento del array y devuelve ese elemento eliminado. Si el array está vacío, devuelve undefined. Reindexa los elementos restantes.</p>
-            <pre class="codigo"><code>
-            let frutas = ["manzana", "banana", "naranja"];
-            let primerElemento = frutas.shift();
-            console.log(frutas); // Output: ["banana", "naranja"]
-            console.log(primerElemento); // Output: "manzana"
-            </code></pre>
-
-              <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn3" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosShift" class="contenedor-resultados">
-                </div>
+            <section>
+                <p><strong>shift: </strong>Elimina el primer elemento del array y devuelve ese elemento eliminado. Si el array está vacío, devuelve undefined. Reindexa los elementos restantes.</p>
+                <pre class="codigo"><code>
+                let frutas = ["manzana", "banana", "naranja"];
+                let primerElemento = frutas.shift();
+                console.log(frutas); // Output: ["banana", "naranja"]
+                console.log(primerElemento); // Output: "manzana"
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="shift">Mostrar Resultado</button>
+                <div id="resultados-shift" class="contenedor-resultados"></div>
             </section>
 
-            <p><strong>unshift(elemento1, elemento2, ...): </strong> Agrega uno o más elementos al principio del array y devuelve la nueva longitud del array. Reindexa los elementos existentes.</p>
-            <pre class="codigo"><code>
-            let frutas = ["banana", "naranja"];
-            let nuevaLongitud = frutas.unshift("manzana", "kiwi");
-            console.log(frutas); // Output: ["manzana", "kiwi", "banana", "naranja"]
-            console.log(nuevaLongitud); // Output: 4
-            </code></pre>
-
-              <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn4" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosUnshift" class="contenedor-resultados">
-                </div>
+            <section>
+                <p><strong>unshift(elemento1, elemento2, ...): </strong> Agrega uno o más elementos al principio del array y devuelve la nueva longitud del array. Reindexa los elementos existentes.</p>
+                <pre class="codigo"><code>
+                let frutas = ["banana", "naranja"];
+                let nuevaLongitud = frutas.unshift("manzana", "kiwi");
+                console.log(frutas); // Output: ["manzana", "kiwi", "banana", "naranja"]
+                console.log(nuevaLongitud); // Output: 4
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="unshift">Mostrar Resultado</button>
+                <div id="resultados-unshift" class="contenedor-resultados"></div>
             </section>
 
-             <p><strong>map(callback(elemento, indice, array)): </strong> Crea un nuevo array con los resultados de llamar a una función proporcionada (callback) en cada elemento del array original. La función callback recibe tres argumentos: el elemento actual, su índice y el array original.</p>
-            <pre class="codigo"><code>
-            let numeros = [1, 2, 3];
-            let dobles = numeros.map(function(numero) {
-            return numero * 2;
-            });
-            console.log(dobles); // Output: [2, 4, 6]
-            console.log(numeros); // Output: [1, 2, 3] (el array original no se modifica)
-            </code></pre>
-
-            <p><strong>filter(callback(elemento, indice, array)): </strong> Crea un nuevo array con todos los elementos que pasan la prueba implementada por la función proporcionada (callback). Al igual que map, la función callback recibe el elemento, su índice y el array original, y debe devolver true para mantener el elemento en el nuevo array, o false para descartarlo.</p>
-            <pre class="codigo"><code>
-            let numeros = [1, 2, 3, 4, 5];
-            let pares = numeros.filter(function(numero) {
-            return numero % 2 === 0;
-            });
-            console.log(pares); // Output: [2, 4]
-            console.log(numeros); // Output: [1, 2, 3, 4, 5] (el array original no se modifica)
-            </code></pre>
-
-            <p><strong>reduce(callback(acumulador, elemento, indice, array), valorInicial): </strong>  Aplica una función (callback) a un acumulador y a cada elemento del array (de izquierda a derecha) para reducirlo a un único valor. La función callback recibe el acumulador, el elemento actual, su índice y el array original. El valorInicial es un valor opcional para el acumulador en la primera llamada de la función callback. Si no se proporciona, se utiliza el primer elemento del array como acumulador y la iteración comienza desde el segundo elemento.</p>
-            <pre class="codigo"><code>
-            let numeros = [1, 2, 3, 4];
-            let suma = numeros.reduce(function(acumulador, numero) {
-            return acumulador + numero;
-            }, 0);
-            console.log(suma); // Output: 10
-
-            let multiplicacion = numeros.reduce((acumulador, numero) => acumulador * numero, 1);
-            console.log(multiplicacion); // Output: 24
-            </code></pre>
-
-            <!--Acceso-->
-            <li><strong> Acceso y Modificación de Arrays: </strong> Se puede acceder a los elementos de un array utilizando su índice dentro de corchetes []. Los índices comienzan desde 0. También se pueden modificar los elementos asignando un nuevo valor a una posición específica del array.</li>
-            <p><strong>Acceso</strong></p>
-              <pre class="codigo"><code>
-            let colores = ["rojo", "verde", "azul"];
-            console.log(colores[0]); // Output: "rojo"
-            console.log(colores[2]); // Output: "azul"
-            console.log(colores[3]); // Output: undefined (índice fuera de rango)
-            </code></pre>
-
-            <p><strong>Modificación</strong></p>
-              <pre class="codigo"><code>
-            let colores = ["rojo", "verde", "azul"];
-            colores[1] = "amarillo";
-            console.log(colores); // Output: ["rojo", "amarillo", "azul"]
-            </code></pre>
-
-            <!--Iteracion-->
-            <li><strong> Iteracion de Arrays: </strong> Existen varias formas de recorrer o iterar sobre los elementos de un array para realizar alguna operación en cada uno de ellos</li>
-            
-            <!--for-->
-            <p><strong>For loop tradiciona: </strong>Es la forma más básica y explícita de iterar. Se controla el índice de forma manual.</p>
-              <pre class="codigo"><code>
-            let numeros = [10, 20, 30];
-            for (let i = 0; i &lt numeros.length; i++) {
-            console.log(`El elemento en el índice ${i} es: ${numeros[i]}`);
-            }
-            </code></pre>
-
-             <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosCreacion" class="contenedor-resultados">
-                </div>
+            <section>
+                <p><strong>map(callback(elemento, indice, array)): </strong> Crea un nuevo array con los resultados de llamar a una función proporcionada (callback) en cada elemento del array original. La función callback recibe tres argumentos: el elemento actual, su índice y el array original.</p>
+                <pre class="codigo"><code>
+                let numeros = [1, 2, 3];
+                let dobles = numeros.map(numero => numero * 2);
+                console.log(dobles); // Output: [2, 4, 6]
+                console.log(numeros); // Output: [1, 2, 3] (el array original no se modifica)
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="map">Mostrar Resultado</button>
+                <div id="resultados-map" class="contenedor-resultados"></div>
             </section>
 
-            <!--map-->
-            <p><strong>Map: </strong>También se utiliza para iterar sobre cada elemento y realizar una acción (aunque su principal propósito es crear un nuevo array).</p>
-              <pre class="codigo"><code>
-            let nombres = ["Ana", "Pedro", "Luisa"];
-            nombres.map(function(nombre) {
-            console.log(`Hola, ${nombre}!`);
-            });
-            </code></pre>
-            
-             <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosCreacion" class="contenedor-resultados">
-                </div>
+            <section>
+                <p><strong>filter(callback(elemento, indice, array)): </strong> Crea un nuevo array con todos los elementos que pasan la prueba implementada por la función proporcionada (callback). Al igual que map, la función callback recibe el elemento, su índice y el array original, y debe devolver true para mantener el elemento en el nuevo array, o false para descartarlo.</p>
+                <pre class="codigo"><code>
+                let numeros = [1, 2, 3, 4, 5];
+                let pares = numeros.filter(numero => numero % 2 === 0);
+                console.log(pares); // Output: [2, 4]
+                console.log(numeros); // Output: [1, 2, 3, 4, 5] (el array original no se modifica)
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="filter">Mostrar Resultado</button>
+                <div id="resultados-filter" class="contenedor-resultados"></div>
             </section>
 
-            <!--for each-->
-            <p><strong>ForEach: </strong>Ejecuta una función proporcionada (callback) una vez por cada elemento del array. Es similar a map en su forma de iterar, pero no crea un nuevo array; se utiliza principalmente para realizar efectos secundarios (como imprimir en la consola, modificar variables externas, etc.).</p>
-              <pre class="codigo"><code>
-            let colores = ["rojo", "verde", "azul"];
-            colores.forEach(function(color, indice) {
-            console.log(`El color en la posición ${indice} es: ${color}`);
-            });
-            </code></pre>
+            <section>
+                <p><strong>reduce(callback(acumulador, elemento, indice, array), valorInicial): </strong>  Aplica una función (callback) a un acumulador y a cada elemento del array (de izquierda a derecha) para reducirlo a un único valor. La función callback recibe el acumulador, el elemento actual, su índice y el array original. El valorInicial es un valor opcional para el acumulador en la primera llamada de la función callback. Si no se proporciona, se utiliza el primer elemento del array como acumulador y la iteración comienza desde el segundo elemento.</p>
+                <pre class="codigo"><code>
+                let numeros = [1, 2, 3, 4];
+                let suma = numeros.reduce((acumulador, numero) => acumulador + numero, 0);
+                console.log(suma); // Output: 10
 
-             <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosCreacion" class="contenedor-resultados">
-                </div>
+                let multiplicacion = numeros.reduce((acumulador, numero) => acumulador * numero, 1);
+                console.log(multiplicacion); // Output: 24
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="reduce">Mostrar Resultado</button>
+                <div id="resultados-reduce" class="contenedor-resultados"></div>
             </section>
 
-            <!--filter-->
-            <p><strong>Filter: </strong>Aunque su propósito principal es filtrar elementos, también itera sobre cada elemento del array para aplicar la condición de filtrado.</p>
-              <pre class="codigo"><code>
-            let edades = [15, 22, 18, 30, 12];
-            let mayoresDeEdad = edades.filter(function(edad) {
-            return edad >= 18;
-            });
-            console.log(mayoresDeEdad); // Output: [22, 18, 30]
-            </code></pre>
-            
-             <h2>Resultados:</h2>
-            <button id="mostrarResultadoBtn" class="boton-resultado">Mostrar Resultado</button>
-            <div id="resultadosCreacion" class="contenedor-resultados">
-                </div>
+            <section>
+                <li><strong> Acceso y Modificación de Arrays: </strong> Se puede acceder a los elementos de un array utilizando su índice dentro de corchetes []. Los índices comienzan desde 0. También se pueden modificar los elementos asignando un nuevo valor a una posición específica del array.</li>
+                <p><strong>Acceso</strong></p>
+                    <pre class="codigo"><code>
+                let colores = ["rojo", "verde", "azul"];
+                console.log(colores[0]); // Output: "rojo"
+                console.log(colores[2]); // Output: "azul"
+                console.log(colores[3]); // Output: undefined (índice fuera de rango)
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="acceso">Mostrar Resultado</button>
+                <div id="resultados-acceso" class="contenedor-resultados"></div>
+            </section>
+
+            <section>
+                <p><strong>Modificación</strong></p>
+                    <pre class="codigo"><code>
+                let colores = ["rojo", "verde", "azul"];
+                colores[1] = "amarillo";
+                console.log(colores); // Output: ["rojo", "amarillo", "azul"]
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="modificacion">Mostrar Resultado</button>
+                <div id="resultados-modificacion" class="contenedor-resultados"></div>
+            </section>
+
+            <section>
+                <li><strong> Iteracion de Arrays: </strong> Existen varias formas de recorrer o iterar sobre los elementos de un array para realizar alguna operación en cada uno de ellos</li>
+
+                <p><strong>For loop tradiciona: </strong>Es la forma más básica y explícita de iterar. Se controla el índice de forma manual.</p>
+                    <pre class="codigo"><code>
+                let numeros = [10, 20, 30];
+                for (let i = 0; i < numeros.length; i++) {
+                console.log(`El elemento en el índice ${i} es: ${numeros[i]}`);
+                }
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="for-loop">Mostrar Resultado</button>
+                <div id="resultados-for-loop" class="contenedor-resultados"></div>
+            </section>
+
+            <section>
+                <p><strong>Map: </strong>También se utiliza para iterar sobre cada elemento y realizar una acción (aunque su principal propósito es crear un nuevo array).</p>
+                    <pre class="codigo"><code>
+                let nombres = ["Ana", "Pedro", "Luisa"];
+                nombres.map(nombre => console.log(`Hola, ${nombre}!`));
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="map-iteracion">Mostrar Resultado</button>
+                <div id="resultados-map-iteracion" class="contenedor-resultados"></div>
+            </section>
+
+            <section>
+                <p><strong>ForEach: </strong>Ejecuta una función proporcionada (callback) una vez por cada elemento del array. Es similar a map en su forma de iterar, pero no crea un nuevo array; se utiliza principalmente para realizar efectos secundarios (como imprimir en la consola, modificar variables externas, etc.).</p>
+                    <pre class="codigo"><code>
+                let colores = ["rojo", "verde", "azul"];
+                colores.forEach((color, indice) => console.log(`El color en la posición ${indice} es: ${color}`));
+                </code></pre>
+                <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="forEach">Mostrar Resultado</button>
+                <div id="resultados-forEach" class="contenedor-resultados"></div>
+
+            </section>
+
+            <section>
+                <p><strong>Filter: </strong>Aunque su propósito principal es filtrar elementos, también itera sobre cada elemento del array para aplicar la condición de filtrado.</p>
+                    <pre class="codigo"><code>
+                let edades = [15, 22, 18, 30, 12];
+                let mayoresDeEdad = edades.filter(edad => edad >= 18);
+                console.log(mayoresDeEdad); // Output: [22, 18, 30]
+                </code></pre>
+                <h2>Resultados:</h2>
+                  <button class="boton-resultado" data-resultado="filter-iteracion">Mostrar Resultado</button>
+                <div id="resultados-filter-iteracion" class="contenedor-resultados"></div>
             </section>
         </ul>
     </div>
@@ -201,64 +199,84 @@
 
 </body>
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-        const mostrarResultadoBtn = document.getElementById('mostrarResultadoBtn');
-        const resultadosDiv1 = document.getElementById('resultadosPush');
+document.addEventListener('DOMContentLoaded', function () {
+    const botones = document.querySelectorAll('.boton-resultado');
 
-        const mostrarResultadoBtn2 = document.getElementById('mostrarResultadoBtn2');
-        const resultadosDiv2 = document.getElementById('resultadosPop');
-        
-        const mostrarResultadoBtn3 = document.getElementById('mostrarResultadoBtn3');
-        const resultadosDiv3 = document.getElementById('resultadosShift');
+    botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const tipo = boton.dataset.resultado;
+            const contenedor = document.getElementById('resultados-' + tipo);
 
-        const mostrarResultadoBtn4 = document.getElementById('mostrarResultadoBtn4');
-        const resultadosDiv4 = document.getElementById('resultadosUnshift');
+            let resultado = '';
+            switch (tipo) {
+                case 'push':
+                    let frutas1 = ["manzana", "banana"];
+                    let nuevaLongitud1 = frutas1.push("naranja");
+                    resultado = `Array: ${JSON.stringify(frutas1)}<br>Nueva longitud: ${nuevaLongitud1}`;
+                    break;
+                case 'pop':
+                    let frutas2 = ["manzana", "banana", "naranja"];
+                    let eliminado2 = frutas2.pop();
+                    resultado = `Array: ${JSON.stringify(frutas2)}<br>Elemento eliminado: ${eliminado2}`;
+                    break;
+                case 'shift':
+                    let frutas3 = ["manzana", "banana", "naranja"];
+                    let eliminado3 = frutas3.shift();
+                    resultado = `Array: ${JSON.stringify(frutas3)}<br>Elemento eliminado: ${eliminado3}`;
+                    break;
+                case 'unshift':
+                    let frutas4 = ["banana", "naranja"];
+                    let nuevaLongitud4 = frutas4.unshift("manzana", "kiwi");
+                    resultado = `Array: ${JSON.stringify(frutas4)}<br>Nueva longitud: ${nuevaLongitud4}`;
+                    break;
+                case 'map':
+                    let numeros1 = [1, 2, 3];
+                    let dobles = numeros1.map(n => n * 2);
+                    resultado = `Array original: ${JSON.stringify(numeros1)}<br>Dobles: ${JSON.stringify(dobles)}`;
+                    break;
+                case 'filter':
+                    let numeros2 = [1, 2, 3, 4, 5];
+                    let pares = numeros2.filter(n => n % 2 === 0);
+                    resultado = `Original: ${JSON.stringify(numeros2)}<br>Pares: ${JSON.stringify(pares)}`;
+                    break;
+                case 'reduce':
+                    let numeros3 = [1, 2, 3, 4];
+                    let suma = numeros3.reduce((acc, n) => acc + n, 0);
+                    let mult = numeros3.reduce((acc, n) => acc * n, 1);
+                    resultado = `Suma: ${suma}<br>Multiplicación: ${mult}`;
+                    break;
+                case 'acceso':
+                    let colores1 = ["rojo", "verde", "azul"];
+                    resultado = `Elemento 0: ${colores1[0]}<br>Elemento 2: ${colores1[2]}<br>Elemento 3: ${colores1[3]}`;
+                    break;
+                case 'modificacion':
+                    let colores2 = ["rojo", "verde", "azul"];
+                    colores2[1] = "amarillo";
+                    resultado = `Colores modificados: ${JSON.stringify(colores2)}`;
+                    break;
+                case 'for-loop':
+                    let numeros4 = [10, 20, 30];
+                    resultado = numeros4.map((n, i) => `Índice ${i}: ${n}`).join('<br>');
+                    break;
+                case 'map-iteracion':
+                    let nombres = ["Ana", "Pedro", "Luisa"];
+                    resultado = nombres.map(nombre => `Hola, ${nombre}!`).join('<br>');
+                    break;
+                case 'forEach':
+                    let colores = ["rojo", "verde", "azul"];
+                    colores.forEach((color, indice) => {
+                        resultado += `El color en la posición ${indice} es: ${color} <br>`;
+                    });
+                    break
+                default:
+                    resultado = 'Resultado no disponible.';
+            }
 
-        mostrarResultadoBtn.addEventListener('click', function() {
-            resultadosDiv1.innerHTML = '';
-            const detalles = resultadoPush();
-            const obtenerFrutas = obtenerArrayFrutas();
-            const obtenerArray = mostrarArray(obtenerFrutas);
-            mostrarResultadoEnDiv("Longitud del array: " +detalles, resultadosDiv1);
-            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv1); 
+            contenedor.innerHTML = resultado;
         });
-
-          mostrarResultadoBtn2.addEventListener('click', function() {
-            resultadosDiv2.innerHTML = '';
-            const detalles = devolverUltimoElemento();
-            const obtenerFrutas2 = obtenerArrayFrutas2();
-            const obtenerArray = mostrarArray(obtenerFrutas2);
-            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv2); 
-            mostrarResultadoEnDiv("elemento eliminado del array: " +detalles, resultadosDiv2);
-        });
-
-        mostrarResultadoBtn3.addEventListener('click', function() {
-            resultadosDiv3.innerHTML = '';
-            const detalles = devolverPrimerElemento();
-            const obtenerFrutas3 = obtenerArrayFrutas3();
-            const obtenerArray = mostrarArray(obtenerFrutas3);
-            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv3); 
-            mostrarResultadoEnDiv("elemento eliminado del array: " +detalles, resultadosDiv3);
-        });
-
-          mostrarResultadoBtn4.addEventListener('click', function() {
-            resultadosDiv4.innerHTML = '';
-            const obtenerFrutas4 = obtenerArrayFrutas4();
-            const obtenerArray = mostrarArray(obtenerFrutas4);
-            const detalles = longitudFrutas4();
-            mostrarResultadoEnDiv("Contenido del array: " +obtenerArray, resultadosDiv4); 
-            mostrarResultadoEnDiv("Longitud array: " +detalles, resultadosDiv4);
-        });
-
-       
-        function mostrarResultadoEnDiv(mensaje, elementoDestino) {
-            const nuevoParrafo = document.createElement("p");
-            nuevoParrafo.textContent = mensaje;
-            elementoDestino.appendChild(nuevoParrafo);
-        }
-
-
     });
+});
 </script>
+
 <script src="/temario/js/objetos/arrays.js"></script>
 </html>

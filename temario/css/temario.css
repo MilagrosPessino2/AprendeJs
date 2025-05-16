@@ -121,7 +121,7 @@ ul li {
 
 /* Estilos para la sección de Resultados */
 .resultados-seccion {
-    background-color: #ffffff; /* Fondo blanco para destacar */
+    background-color: #ffffff; 
     padding: 20px;
     margin: 20px 0;
     border-radius: 8px;
@@ -130,15 +130,15 @@ ul li {
 }
 
 .resultados-seccion h2 {
-    color: #4a90e2; /* Color primario para el título */
+    color: #4a90e2;
     margin-top: 0;
     margin-bottom: 15px;
-    border-bottom: 2px solid #4a90e2; /* Línea debajo del título */
+    border-bottom: 2px solid #4a90e2;
     padding-bottom: 8px;
 }
 
 .boton-resultado {
-    background-color: #4a90e2; /* Botón con el color primario */
+    background-color: #4a90e2; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -150,11 +150,11 @@ ul li {
 }
 
 .boton-resultado:hover {
-    background-color: #357ab7; /* Oscurecer al pasar el ratón */
+    background-color: #357ab7; 
 }
 
 .boton-resultado2 {
-    background-color: #4a90e2; /* Botón con el color primario */
+    background-color: #4a90e2;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -166,23 +166,32 @@ ul li {
 }
 
 .boton-resultado2:hover {
-    background-color: #357ab7; /* Oscurecer al pasar el ratón */
+    background-color: #357ab7; 
 }
 
 .contenedor-resultados {
     padding: 15px;
-    border: 1px solid #d0d8e0; /* Borde sutil alrededor de los resultados */
+    border: 1px solid #d0d8e0;
     border-radius: 5px;
-    background-color: #f9f9f9; /* Un fondo ligeramente grisáceo */
+    background-color: #f9f9f9; 
 }
 
 .contenedor-resultados p {
-    color: #333; /* Color de texto estándar */
+    color: #333; 
     margin-bottom: 8px;
     font-size: 1rem;
 }
 
 .contenedor-resultados p:last-child {
-    margin-bottom: 0; /* Eliminar el margen inferior del último párrafo */
+    margin-bottom: 0; 
 }
+
+#teclado {
+      width: 200px;
+      padding: 5px;
+      font-size: 16px;
+    }
+    .log {
+      margin-top: 15px;
+      font-weight: bold;}
 

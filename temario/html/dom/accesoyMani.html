@@ -138,9 +138,8 @@
             miBoton.style.color = "white";
             miBoton.style.padding = "10px 20px";
             </code></pre>
-            <h2>Resultados:</h2>
-                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
-                <div id="resultados-pop" class="contenedor-resultados"></div>
+            <button class="boton-resultado2" id="btnEstilo" onclick="cambiarEstilo()">Cambiar estilo</button>
+
             <p>También se pueden manipular las clases CSS de un elemento a través de su propiedad <strong>classList</strong>, que proporciona métodos como <code>add()</code>, <code>remove()</code>, <code>toggle()</code> y <code>contains()</code>.</p>
             <pre class="codigo"><code>
             const miElemento = document.querySelector(".mi-elemento");
@@ -151,9 +150,6 @@
               console.log("El elemento tiene la clase 'importante'");
             }
             </code></pre>
-            <h2>Resultados:</h2>
-                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
-                <div id="resultados-pop" class="contenedor-resultados"></div>
 
             <li><strong> Eventos y Listeners: </strong>Los eventos son acciones que ocurren en el navegador (por ejemplo, un clic del ratón, una tecla presionada, la carga de una página). Los listeners (o manejadores de eventos) son funciones que se ejecutan en respuesta a estos eventos.</li>
             <ul>
@@ -163,9 +159,42 @@
             <p>Algunos tipos de eventos comunes:</p>
             <ul>
                 <li><strong>Mouse:</strong> click, mouseover, mouseout, mousedown, mouseup, mousemove</li>
+                <div id="click" class="boton-resultado2">Click</div>
+                <div id="mouseover" class="boton-resultado2">Mouseover</div>
+                <div id="mouseout" class="boton-resultado2">Mouseout</div>
+                <div id="mousedown" class="boton-resultado2">Mousedown</div>
+                <div id="mouseup" class="boton-resultado2">Mouseup</div>
+                <div id="mousemove" class="boton-resultado2">Mousemove</div>
+
                 <li><strong>Teclado:</strong> keydown, keyup, keypress</li>
+                <h3>Presioná teclas en el campo</h3>
+                <input type="text" id="teclado" placeholder="Escribí algo aquí..." />
+                <div class="log" id="log">Esperando acción...</div>
+                <br>
                 <li><strong>Formulario:</strong> submit, change, focus, blur</li>
+
+                  <h3>Formulario de prueba</h3>
+                <form id="miFormulario">
+                    <input type="text" id="nombre" placeholder="Tu nombre">
+                    <select id="color">
+                    <option value="">Elige un color</option>
+                    <option value="rojo">Rojo</option>
+                    <option value="verde">Verde</option>
+                    <option value="azul">Azul</option>
+                    </select>
+                    <input type="submit" value="Enviar">
+                </form>
+                <div class="log" id="log2">Esperando interacción...</div>
+                <br>
+
                 <li><strong>Documento/Ventana:</strong> load, DOMContentLoaded, resize, scroll</li>
+                
+                <h1>Scroll, Resize y más</h1>
+                <p>Hace scroll o redimensioná la ventana para ver los eventos.</p>
+
+                <div class="info" id="info">Esperando eventos...</div>
+
+                <div class="espacio"></div>
             </ul>
             <pre class="codigo"><code>
             const botonSaludar = document.querySelector("#saludar-boton");
@@ -186,10 +215,7 @@
               this.style.backgroundColor = ""; // Volver al color original
             });
             </code></pre>
-            <h2>Resultados:</h2>
-                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
-                <div id="resultados-pop" class="contenedor-resultados"></div>
-        </ul>
+            
 
         <p><strong>Manipulación Dinámica del DOM</strong></p>
         <p>La manipulación dinámica del DOM permite crear, añadir y eliminar elementos de la página web utilizando JavaScript.</p>
@@ -212,9 +238,7 @@
             // Crear un nuevo comentario
             const comentario = document.createComment("Este es un comentario");
             </code></pre>
-            <h2>Resultados:</h2>
-                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
-                <div id="resultados-pop" class="contenedor-resultados"></div>
+            
             <p><strong>Añadir Nodos al DOM:</strong></p>
             <ul>
                 <li><code>elementoPadre.appendChild(nuevoNodo)</code>: Añade <code>nuevoNodo</code> al final de la lista de hijos de <code>elementoPadre</code>.</li>
@@ -232,9 +256,6 @@
             // Insertar el comentario antes del párrafo
             contenedor.insertBefore(comentario, nuevoParrafo);
             </code></pre>
-            <h2>Resultados:</h2>
-                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
-                <div id="resultados-pop" class="contenedor-resultados"></div>
 
             <p><strong>Eliminar Nodos del DOM:</strong></p>
             <ul>
@@ -250,11 +271,20 @@
 
             // Eliminar el párrafo usando remove()
             nuevoParrafo.remove();
-            </code></pre>
-            <h2>Resultados:</h2>
-                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
-                <div id="resultados-pop" class="contenedor-resultados"></div>
+            </code></pre> 
         </ul>
+
+        <h3>Ejemplo: Crear, Insertar y Eliminar Nodos</h3>
+
+        <button class="boton-resultado2" onclick="crearElementos()">Crear Elementos</button>
+        <button class="boton-resultado2" onclick="insertarAntes()">Insertar Antes</button>
+        <button class="boton-resultado2" onclick="eliminarConRemoveChild()">Eliminar con removeChild</button>
+        <button class="boton-resultado2" onclick="eliminarConRemove()">Eliminar con remove</button>
+
+        <div id="contenedor">
+            <!-- Aquí se agregan los nodos -->
+            <p id="referencia">Elemento de referencia</p>
+        </div>
       </div>
 </div>
 </body>

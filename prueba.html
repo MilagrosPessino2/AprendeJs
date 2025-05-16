@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventos de Mouse</title>
+  <style>
+    .caja {
+      width: 200px;
+      height: 80px;
+      margin: 10px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border: 2px solid #999;
+      text-align: center;
+      line-height: 40px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="click" class="caja">Click</div>
+  <div id="mouseover" class="caja">Mouseover</div>
+  <div id="mouseout" class="caja">Mouseout</div>
+  <div id="mousedown" class="caja">Mousedown</div>
+  <div id="mouseup" class="caja">Mouseup</div>
+  <div id="mousemove" class="caja">Mousemove</div>
+
+  <script>
+    document.getElementById("click").addEventListener("click", function () {
+      this.style.backgroundColor = "#a2d5f2";
+      this.textContent = "¡Hiciste click!";
+    });
+
+    document.getElementById("mouseover").addEventListener("mouseover", function () {
+      this.style.backgroundColor = "#c3f584";
+      this.textContent = "¡Mouse sobre!";
+    });
+
+    document.getElementById("mouseout").addEventListener("mouseout", function () {
+      this.style.backgroundColor = "#f9c6c9";
+      this.textContent = "¡Saliste del área!";
+    });
+
+    document.getElementById("mousedown").addEventListener("mousedown", function () {
+      this.style.backgroundColor = "#f6d186";
+      this.textContent = "¡Presionaste!";
+    });
+
+    document.getElementById("mouseup").addEventListener("mouseup", function () {
+      this.style.backgroundColor = "#d5a6bd";
+      this.textContent = "¡Soltaste el botón!";
+    });
+
+    document.getElementById("mousemove").addEventListener("mousemove", function () {
+      this.style.backgroundColor = "#bde0fe";
+      this.textContent = "¡Moviendo el mouse!";
+    });
+  </script>
+
+</body>
+</html>

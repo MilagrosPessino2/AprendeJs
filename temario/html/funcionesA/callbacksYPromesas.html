@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FUNCIONES AVANZADAS</title>
   <link rel="stylesheet" href="/temario/css/temario.css">
+  <link rel="icon" href="/js.png" type="image/png">
+
 </head>
 <body>
 
@@ -15,7 +17,7 @@
     <nav>
     <a href="/index.html">Inicio</a>
     <a href="/temario/html/temario.html">Temario</a>
-    <a href="#">Práctica</a>
+    <a href="#">Apuntes</a>
     <a href="/tips/tips.html">Tips</a>
   </nav>
 <div class="contenedor">
@@ -43,7 +45,9 @@
             hacerAlgoAsincrono(mostrarResultado); // Se pasa 'mostrarResultado' como callback
             console.log("Mientras tanto..."); // Esto se ejecuta antes del callback
             </code></pre>
-
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="calls">Mostrar Resultado</button>
+                <div id="resultados-calls" class="contenedor-resultados"></div>
             <P>El problema con los callbacks anidados para manejar múltiples operaciones asíncronas es el llamado "callback hell" o "pirámide de la muerte", que puede hacer que el código sea difícil de leer y mantener.</P>
         
             <!--PROMESAS-->
@@ -84,9 +88,11 @@
 
             console.log("Iniciando la obtención de datos..."); // Esto se ejecuta primero
             </code></pre>
-
-        </ul>
+             <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="prome">Mostrar Resultado</button>
+                <div id="resultados-prome" class="contenedor-resultados"></div>
     </div>
 </div>
 </body>
+<script src="/temario/js/funcionesA.js/callsbacks.js"></script>
 </html>

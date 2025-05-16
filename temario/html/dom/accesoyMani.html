@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM</title>
     <link rel="stylesheet" href="/temario/css/temario.css">
+    <link rel="icon" href="/js.png" type="image/png">
+
 </head>
 <body>
 
     <header>
-        <h1>Manejo del DOM</h1>
+        <h1 id="titulo-principal">Manejo del DOM</h1>
         <h2>Acceso y Manipulación del DOM</h2>
     </header>
 
     <nav>
         <a href="/index.html">Inicio</a>
         <a href="/temario/html/temario.html">Temario</a>
-        <a href="#">Práctica</a>
+        <a href="#">Apuntes</a>
         <a href="/tips/tips.html">Tips</a>
     </nav>
 <div class="contenedor">
@@ -29,6 +31,9 @@
             const miTitulo = document.getElementById("titulo-principal");
             console.log(miTitulo); // Devuelve el elemento con el ID "titulo-principal"
             </code></pre>
+             <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="getId">Mostrar Resultado</button>
+                <div id="resultados-getId" class="contenedor-resultados"></div>
 
             <p><strong>document.getElementsByClassName(className): </strong>Selecciona una colección HTML (similar a un array, pero no es un array) de todos los elementos que tienen la clase CSS especificada en su atributo class.</p>
             <pre class="codigo"><code>
@@ -36,6 +41,14 @@
             console.log(elementosLista); // Devuelve una HTMLCollection de elementos con la clase "item-lista"
             console.log(elementosLista[0]); // Acceder al primer elemento de la colección
             </code></pre>
+            <ul>
+                <li class="item-lista">1 Item ejemplo</li>
+                <li class="item-lista">2 Item ejemplo</li>
+                <li class="item-lista">3 Item ejemplo</li>
+            </ul>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="classN">Mostrar Resultado</button>
+                <div id="resultados-classN" class="contenedor-resultados"></div>
 
             <p><strong>document.getElementsByTagName(tagName): </strong>Selecciona una colección HTML de todos los elementos con el nombre de etiqueta HTML especificado (por ejemplo, 'div', 'p', 'span', 'li').</p>
             <pre class="codigo"><code>
@@ -43,6 +56,15 @@
             console.log(todosLosParrafos); // Devuelve una HTMLCollection de todos los elementos &lt;p&gt;
             console.log(todosLosParrafos.length); // Obtener la cantidad de párrafos
             </code></pre>
+            <ul>
+            <li><span>span1</span></li>
+            <li><span>span2</span></li>
+            <li><span>span3</span></li>
+            </ul>
+            
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="tagName">Mostrar Resultado</button>
+                <div id="resultados-tagName" class="contenedor-resultados"></div>
 
             <p><strong>document.querySelector(selector): </strong>Selecciona el primer elemento dentro del documento que coincide con el selector CSS especificado (puede ser un ID, una clase, un atributo, etc.). Es más versátil que los métodos anteriores para selecciones complejas.</p>
             <pre class="codigo"><code>
@@ -53,6 +75,9 @@
             console.log(elementoConId);
             console.log(enlaceDentroDeDiv);
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="selector">Mostrar Resultado</button>
+                <div id="resultados-selector" class="contenedor-resultados"></div>
 
             <p><strong>document.querySelectorAll(selector): </strong>Selecciona todos los elementos dentro del documento que coinciden con el selector CSS especificado. Devuelve un NodeList, que es similar a una HTMLCollection pero proporciona métodos más modernos como forEach.</p>
             <pre class="codigo"><code>
@@ -62,6 +87,9 @@
               console.log(item.textContent); // Iterar sobre cada elemento del NodeList
             });
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="selectorAll">Mostrar Resultado</button>
+                <div id="resultados-selectorAll" class="contenedor-resultados"></div>
 
             <li><strong> Modificación de Contenido, Atributos y Estilos: </strong>Una vez que se ha seleccionado un elemento del DOM, se pueden modificar sus propiedades.</li>
 
@@ -79,7 +107,10 @@
             console.log(miDiv.innerHTML); // Obtener el HTML dentro del div
             miDiv.innerHTML = "<p>Este es un <strong>texto importante</strong> dentro del div.</p>";
             </code></pre>
-
+            <p id="mi-parrafo"><strong>Texto a cambiar</strong></p>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="cambiarTexto">Mostrar Resultado</button>
+                <div id="resultados-cambiarTexto" class="contenedor-resultados"></div>
             <p><strong>Atributos:</strong></p>
             <ul>
                 <li><strong>element.getAttribute(nombreAtributo):</strong> Obtiene el valor del atributo especificado.</li>
@@ -94,6 +125,12 @@
             miEnlace.removeAttribute("title");
             </code></pre>
 
+            <a id="miEnlace" href="https://www.ejemplo.com" target="_blank">Visitar Ejemplo</a>
+            <br>
+            <button class="boton-resultado2" onclick="cambiarEnlace()">Cambiar Enlace</button>
+            <button class="boton-resultado2" onclick="mostrarDetallesEnlace()">Mostrar Detalles</button>
+            <button class="boton-resultado2" onclick="eliminarTarget()">Eliminar Target</button>
+
             <p><strong>Estilos:</strong> Se pueden modificar los estilos CSS de un elemento directamente a través de su propiedad style. Las propiedades CSS en JavaScript suelen estar en camelCase (por ejemplo, backgroundColor en lugar de background-color).</p>
             <pre class="codigo"><code>
             const miBoton = document.querySelector("#mi-boton");
@@ -101,6 +138,9 @@
             miBoton.style.color = "white";
             miBoton.style.padding = "10px 20px";
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
             <p>También se pueden manipular las clases CSS de un elemento a través de su propiedad <strong>classList</strong>, que proporciona métodos como <code>add()</code>, <code>remove()</code>, <code>toggle()</code> y <code>contains()</code>.</p>
             <pre class="codigo"><code>
             const miElemento = document.querySelector(".mi-elemento");
@@ -111,6 +151,9 @@
               console.log("El elemento tiene la clase 'importante'");
             }
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
 
             <li><strong> Eventos y Listeners: </strong>Los eventos son acciones que ocurren en el navegador (por ejemplo, un clic del ratón, una tecla presionada, la carga de una página). Los listeners (o manejadores de eventos) son funciones que se ejecutan en respuesta a estos eventos.</li>
             <ul>
@@ -143,6 +186,9 @@
               this.style.backgroundColor = ""; // Volver al color original
             });
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
         </ul>
 
         <p><strong>Manipulación Dinámica del DOM</strong></p>
@@ -156,17 +202,19 @@
                 <li><code>document.createComment(data)</code>: Crea un nuevo nodo de comentario.</li>
             </ul>
             <pre class="codigo"><code>
-// Crear un nuevo elemento &lt;p&gt;
-const nuevoParrafo = document.createElement("p");
-nuevoParrafo.textContent = "Este es un párrafo creado dinámicamente.";
+            // Crear un nuevo elemento &lt;p&gt;
+            const nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = "Este es un párrafo creado dinámicamente.";
 
-// Crear un nuevo nodo de texto
-const textoAdicional = document.createTextNode(" Texto adicional.");
+            // Crear un nuevo nodo de texto
+            const textoAdicional = document.createTextNode(" Texto adicional.");
 
-// Crear un nuevo comentario
-const comentario = document.createComment("Este es un comentario");
+            // Crear un nuevo comentario
+            const comentario = document.createComment("Este es un comentario");
             </code></pre>
-
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
             <p><strong>Añadir Nodos al DOM:</strong></p>
             <ul>
                 <li><code>elementoPadre.appendChild(nuevoNodo)</code>: Añade <code>nuevoNodo</code> al final de la lista de hijos de <code>elementoPadre</code>.</li>
@@ -184,6 +232,9 @@ const comentario = document.createComment("Este es un comentario");
             // Insertar el comentario antes del párrafo
             contenedor.insertBefore(comentario, nuevoParrafo);
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
 
             <p><strong>Eliminar Nodos del DOM:</strong></p>
             <ul>
@@ -200,8 +251,12 @@ const comentario = document.createComment("Este es un comentario");
             // Eliminar el párrafo usando remove()
             nuevoParrafo.remove();
             </code></pre>
+            <h2>Resultados:</h2>
+                <button class="boton-resultado" data-resultado="pop">Mostrar Resultado</button>
+                <div id="resultados-pop" class="contenedor-resultados"></div>
         </ul>
       </div>
 </div>
 </body>
+<script src="/temario/js/dom/dom.js"></script>
 </html>

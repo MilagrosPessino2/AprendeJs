@@ -153,6 +153,22 @@ ul li {
     background-color: #357ab7; /* Oscurecer al pasar el ratón */
 }
 
+.boton-resultado2 {
+    background-color: #4a90e2; /* Botón con el color primario */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.boton-resultado2:hover {
+    background-color: #357ab7; /* Oscurecer al pasar el ratón */
+}
+
 .contenedor-resultados {
     padding: 15px;
     border: 1px solid #d0d8e0; /* Borde sutil alrededor de los resultados */
